@@ -1,0 +1,44 @@
+# Stack para rodar o site Plansul via Docker Compose — pode ser importado
+# diretamente no Rancher (Apps > importar/rodar um stack Compose) ou rodado
+# manualmente com "docker compose up -d" num VPS.
+#
+# As variáveis NEXT_PUBLIC_* usadas em "build.args" vêm do arquivo ".env" na
+# mesma pasta deste docker-compose.yml (o Docker Compose lê esse .env
+# automaticamente). Preencha-as com os valores reais antes de buildar — ver
+# .env.example para a lista completa e o README para o motivo de serem
+# build args em vez de variáveis de runtime comuns.
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://www.plansul.net}
+        NEXT_PUBLIC_PORTAL_BENEFICIARIO_URL: ${NEXT_PUBLIC_PORTAL_BENEFICIARIO_URL:-}
+        NEXT_PUBLIC_PORTAL_EMPRESA_URL: ${NEXT_PUBLIC_PORTAL_EMPRESA_URL:-}
+        NEXT_PUBLIC_PORTAL_PRESTADOR_URL: ${NEXT_PUBLIC_PORTAL_PRESTADOR_URL:-}
+        NEXT_PUBLIC_GUIA_MEDICO_URL: ${NEXT_PUBLIC_GUIA_MEDICO_URL:-}
+    image: plansul-site:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      # Caminho DENTRO do container, no volume persistente definido abaixo —
+      # não é o mesmo "file:./dev.db" usado em desenvolvimento local.
+      DATABASE_URL: file:/app/data/dev.db
+    volumes:
+      # Persiste o banco SQLite entre restarts/redeploys do container. Sem
+      # isso, cada novo container nasceria com o banco vazio.
+      - plansul_db_data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  plansul_db_data:
+    driver: local

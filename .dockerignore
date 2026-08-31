@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.gitignore
+npm-debug.log*
+
+# ambiente local — segredos reais entram via variáveis de ambiente do
+# Rancher/Docker Compose, nunca dentro da imagem
+.env
+.env.local
+.env*.local
+
+# banco local de desenvolvimento (o container usa o volume, não este arquivo)
+prisma/dev.db
+prisma/dev.db-journal
+
+README.md
