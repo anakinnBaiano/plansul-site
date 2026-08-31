@@ -5,13 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, EXTERNAL_LINKS } from "@/lib/constants";
+import { noticias, isCategoriaAlerta } from "@/data/noticias";
 import { cn } from "@/lib/utils";
 
-// O menu desktop tem 9 itens (incluindo IDSS, Reajustes e Notícias Plansul)
-// — em telas médias (lg, 1024px) ele não cabe mais numa linha só. Por isso a
-// troca para navegação mobile (hambúrguer/drawer) acontece em "xl" (1280px),
-// não "lg".
-const DESKTOP_BREAKPOINT = 1280;
+const TEM_NOTICIA_ALERTA = noticias.some((n) => isCategoriaAlerta(n.categoria));
+
+// O menu desktop tem 9 itens (incluindo IDSS, Reajustes e Notícias Plansul).
+// Em "xl" (1280px) ele até cabe, mas espremido a ponto de o próprio menu
+// invadir o botão "Portal do Beneficiário" — por isso a troca pra navegação
+// mobile (hambúrguer/drawer) só acontece em "2xl" (1536px), faixa em que
+// sobra espaço de verdade pra logo + 9 itens + botão numa linha só.
+const DESKTOP_BREAKPOINT = 1536;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -39,7 +43,7 @@ export default function Header() {
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-plansul-blue to-plansul-teal"
       />
-      <div className="mx-auto flex h-16 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Página inicial da Plansul">
           <Image
             src="/logo-plansul.png"
@@ -53,7 +57,7 @@ export default function Header() {
         </Link>
 
         {/* Navegação desktop */}
-        <nav aria-label="Navegação principal" className="hidden min-w-0 xl:block">
+        <nav aria-label="Navegação principal" className="hidden min-w-0 2xl:ml-10 2xl:block">
           <ul className="flex items-center gap-x-4 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-6 2xl:text-sm">
             {NAV_LINKS.map((link) =>
               link.external ? (
@@ -71,9 +75,14 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="whitespace-nowrap rounded-sm transition-colors hover:text-plansul-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal"
+                    className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm transition-colors hover:text-plansul-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal"
                   >
                     {link.label}
+                    {link.label === "Notícias Plansul" && TEM_NOTICIA_ALERTA && (
+                      <span aria-hidden="true" className="motion-safe:animate-blink">
+                        ⚠️
+                      </span>
+                    )}
                   </Link>
                 </li>
               )
@@ -81,7 +90,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden shrink-0 xl:block">
+        <div className="hidden shrink-0 2xl:block">
           <a
             href={EXTERNAL_LINKS.portalBeneficiario}
             target="_blank"
@@ -95,7 +104,7 @@ export default function Header() {
         {/* Botão hambúrguer mobile/tablet */}
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-plansul-blue xl:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-plansul-blue 2xl:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="menu-mobile"
@@ -109,7 +118,7 @@ export default function Header() {
       <div
         id="menu-mobile"
         className={cn(
-          "fixed inset-0 top-16 z-40 bg-white xl:hidden",
+          "fixed inset-0 top-16 z-40 bg-white 2xl:hidden",
           open ? "block" : "hidden"
         )}
       >
@@ -133,9 +142,14 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block min-h-[48px] py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
+                    className="flex min-h-[48px] items-center gap-1.5 py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
                   >
                     {link.label}
+                    {link.label === "Notícias Plansul" && TEM_NOTICIA_ALERTA && (
+                      <span aria-hidden="true" className="motion-safe:animate-blink">
+                        ⚠️
+                      </span>
+                    )}
                   </Link>
                 </li>
               )

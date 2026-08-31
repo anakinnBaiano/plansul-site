@@ -3,7 +3,7 @@ import { Mail, MessageCircleQuestion, Megaphone, UserRound } from "lucide-react"
 import Breadcrumb from "@/components/Breadcrumb";
 import ServiceCard from "@/components/ServiceCard";
 import { CONTACT, EXTERNAL_LINKS } from "@/lib/constants";
-import { prisma } from "@/lib/prisma";
+import { unidades as unidadesData } from "@/data/unidades";
 
 export const metadata: Metadata = {
   title: "Atendimento",
@@ -17,10 +17,8 @@ const cards = [
   { titulo: "Portal do Usuário", descricao: "Acesse seus dados e serviços.", href: EXTERNAL_LINKS.portalBeneficiario, icon: UserRound, external: true },
 ];
 
-export const dynamic = "force-dynamic";
-
-export default async function AtendimentoPage() {
-  const unidades = await prisma.unidade.findMany({ orderBy: { ordem: "asc" } });
+export default function AtendimentoPage() {
+  const unidades = [...unidadesData].sort((a, b) => a.ordem - b.ordem);
 
   return (
     <>

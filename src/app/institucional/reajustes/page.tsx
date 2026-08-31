@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import DocumentoAnoList from "@/components/DocumentoAnoList";
-import { prisma } from "@/lib/prisma";
+import { getDocumentosPorCategoria } from "@/data/documentosPorAno";
 
 export const metadata: Metadata = {
   title: "Reajuste de Contratos Coletivos",
   description: "Comunicados oficiais de reajuste de contratos coletivos da Plansul, por ano.",
 };
 
-export const dynamic = "force-dynamic";
-
-export default async function ReajustesPage() {
-  const documentos = await prisma.documento.findMany({
-    where: { categoria: "reajuste-coletivo" },
-    orderBy: { ano: "desc" },
-  });
+export default function ReajustesPage() {
+  const documentos = getDocumentosPorCategoria("reajuste-coletivo");
 
   return (
     <>

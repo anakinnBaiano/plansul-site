@@ -10,8 +10,4 @@ npm-debug.log*
 .env.local
 .env*.local
 
-# banco local de desenvolvimento (o container usa o volume, não este arquivo)
-prisma/dev.db
-prisma/dev.db-journal
-
 README.md

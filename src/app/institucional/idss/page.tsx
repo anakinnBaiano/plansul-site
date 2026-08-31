@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ExternalLink } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import DocumentoAnoList from "@/components/DocumentoAnoList";
-import { prisma } from "@/lib/prisma";
+import { getDocumentosPorCategoria } from "@/data/documentosPorAno";
 import { EXTERNAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -10,13 +10,8 @@ export const metadata: Metadata = {
   description: "Índice de Desempenho da Saúde Suplementar da Plansul, por ano, com direcionamento ao Portal ANS.",
 };
 
-export const dynamic = "force-dynamic";
-
-export default async function IdssPage() {
-  const documentos = await prisma.documento.findMany({
-    where: { categoria: "idss" },
-    orderBy: { ano: "desc" },
-  });
+export default function IdssPage() {
+  const documentos = getDocumentosPorCategoria("idss");
 
   return (
     <>

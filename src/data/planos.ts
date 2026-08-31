@@ -12,6 +12,8 @@ export type Plano = {
   nome: string;
   publico: string;
   caracteristicas: string[];
+  // Comercialização pausada — o card aparece em cinza com um selo "Desativado".
+  desativado?: boolean;
 };
 
 export const planos: Plano[] = [
@@ -28,5 +30,6 @@ export const planos: Plano[] = [
     nome: "Plano Individual / Familiar",
     publico: "Pessoas físicas e famílias que buscam um plano de saúde particular.",
     caracteristicas: ["Abrangência: Itabuna e Ilhéus"],
+    desativado: true,
   },
 ];

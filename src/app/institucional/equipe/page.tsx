@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
-import { prisma } from "@/lib/prisma";
+import { equipe as equipeData } from "@/data/equipe";
 import { Quote } from "lucide-react";
 
 export const metadata: Metadata = { title: "Nossa equipe" };
-
-export const dynamic = "force-dynamic";
 
 function iniciais(nome: string) {
   return nome
@@ -18,8 +16,8 @@ function iniciais(nome: string) {
     .toUpperCase();
 }
 
-export default async function EquipePage() {
-  const equipe = await prisma.membroEquipe.findMany({ orderBy: { ordem: "asc" } });
+export default function EquipePage() {
+  const equipe = [...equipeData].sort((a, b) => a.ordem - b.ordem);
 
   return (
     <>
@@ -52,11 +50,11 @@ export default async function EquipePage() {
                 )}
               </div>
 
-              <h2 className="mt-5 text-lg font-bold text-slate-900 transition-colors duration-300 group-hover:text-white">{membro.nome}</h2>
-              <p className="text-sm font-semibold text-plansul-teal transition-colors duration-300 group-hover:text-white">{membro.cargo}</p>
+              <h2 className="mt-5 text-lg font-semibold text-slate-900 transition-colors duration-300 group-hover:text-white">{membro.nome}</h2>
+              <p className="text-xs font-normal uppercase tracking-wider text-plansul-teal transition-colors duration-300 group-hover:text-white">{membro.cargo}</p>
 
               <Quote className="mt-4 text-plansul-blue/20 transition-colors duration-300 group-hover:text-white/30" size={28} aria-hidden="true" />
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">{membro.depoimento}</p>
+              <p className="mt-2 text-sm font-normal leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">{membro.depoimento}</p>
             </article>
           ))}
         </div>

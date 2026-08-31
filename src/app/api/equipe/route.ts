@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { equipe } from "@/data/equipe";
 
 export async function GET() {
-  const equipe = await prisma.membroEquipe.findMany({
-    orderBy: { ordem: "asc" },
-  });
-
-  return NextResponse.json(equipe);
+  const ordenada = [...equipe].sort((a, b) => a.ordem - b.ordem);
+  return NextResponse.json(ordenada);
 }

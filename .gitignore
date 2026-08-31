@@ -29,9 +29,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# banco de dados local (Prisma + SQLite) — recriado via "npm run db:migrate && npm run db:seed"
-/prisma/dev.db
-/prisma/dev.db-journal
 
 # typescript
 *.tsbuildinfo

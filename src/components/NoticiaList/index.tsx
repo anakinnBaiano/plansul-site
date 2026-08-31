@@ -21,6 +21,11 @@ export default function NoticiaList() {
             aria-hidden="true"
             className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-plansul-blue to-plansul-teal"
           />
+          {isCategoriaAlerta(noticia.categoria) && (
+            <span aria-hidden="true" className="absolute right-4 top-4 text-xl motion-safe:animate-blink sm:right-6 sm:top-6">
+              ⚠️
+            </span>
+          )}
           <div className="flex flex-wrap items-center gap-3">
             <span
               className={cn(

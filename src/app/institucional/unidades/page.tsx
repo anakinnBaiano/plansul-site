@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
 import { MapPin, Phone } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
-import { prisma } from "@/lib/prisma";
+import { unidades as unidadesData } from "@/data/unidades";
 
 export const metadata: Metadata = {
   title: "Nossas Unidades",
   description: "Endereços e telefones das unidades de atendimento da Plansul.",
 };
 
-export const dynamic = "force-dynamic";
-
-export default async function UnidadesPage() {
-  const unidades = await prisma.unidade.findMany({ orderBy: { ordem: "asc" } });
+export default function UnidadesPage() {
+  const unidades = [...unidadesData].sort((a, b) => a.ordem - b.ordem);
 
   return (
     <>

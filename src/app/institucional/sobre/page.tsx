@@ -3,20 +3,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { Quote, ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
-import { prisma } from "@/lib/prisma";
+import { getConteudoTexto } from "@/data/conteudoInstitucional";
+import { equipe as equipeData } from "@/data/equipe";
 
 export const metadata: Metadata = {
   title: "Sobre a Empresa",
   description: "Conheça a história da Plansul e quem lidera o compromisso com a saúde suplementar de qualidade.",
 };
 
-export const dynamic = "force-dynamic";
-
-export default async function SobreEmpresaPage() {
-  const [historia, equipe] = await Promise.all([
-    prisma.conteudoTexto.findUnique({ where: { slug: "historia" } }),
-    prisma.membroEquipe.findMany({ orderBy: { ordem: "asc" } }),
-  ]);
+export default function SobreEmpresaPage() {
+  const historia = getConteudoTexto("historia");
+  const equipe = [...equipeData].sort((a, b) => a.ordem - b.ordem);
 
   return (
     <>
@@ -66,11 +63,11 @@ export default async function SobreEmpresaPage() {
                     )}
                   </div>
 
-                  <h3 className="mt-5 text-lg font-bold text-slate-900 transition-colors duration-300 group-hover:text-white">{membro.nome}</h3>
-                  <p className="text-sm font-semibold text-plansul-teal transition-colors duration-300 group-hover:text-white">{membro.cargo}</p>
+                  <h3 className="mt-5 text-lg font-semibold text-slate-900 transition-colors duration-300 group-hover:text-white">{membro.nome}</h3>
+                  <p className="text-xs font-normal uppercase tracking-wider text-plansul-teal transition-colors duration-300 group-hover:text-white">{membro.cargo}</p>
 
                   <Quote className="mt-4 text-plansul-blue/20 transition-colors duration-300 group-hover:text-white/30" size={28} aria-hidden="true" />
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">{membro.depoimento}</p>
+                  <p className="mt-2 text-sm font-normal leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">{membro.depoimento}</p>
                 </article>
               ))}
             </div>

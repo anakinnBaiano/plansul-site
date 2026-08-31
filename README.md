@@ -1,21 +1,19 @@
-# Site Plansul — Redesign (MVP + Banco de Dados + Docker)
+# Site Plansul — Redesign (MVP + Docker)
 
 Novo site institucional da Plansul: moderno, responsivo, acessível e orientado a
 tarefas ("Sou beneficiário", "Sou prestador", "Quero contratar um plano"...).
 
-Esta entrega inclui o **MVP completo do front-end** e o **início do back-end**:
-banco de dados (Prisma + SQLite) e rotas de API para os conteúdos que o próprio
-site publica (documentos, unidades, equipe, textos institucionais). Beneficiário,
+Esta entrega inclui o **MVP completo do front-end**. Todo o conteúdo que o
+próprio site publica (documentos, unidades, equipe, textos institucionais)
+vem de arquivos estáticos em `src/data/` — não há banco de dados. Beneficiário,
 Rede Credenciada e Portal do Cliente continuam apontando para os sistemas
-externos já existentes — este banco não duplica esses dados, só o conteúdo
-institucional que é do próprio site.
+externos já existentes.
 
 ## Stack
 
 - Next.js 14 (App Router) + TypeScript
 - Tailwind CSS
 - lucide-react (ícones)
-- **Prisma + SQLite** (banco de dados e ORM)
 - **Docker + Docker Compose** (deploy via Rancher ou VPS)
 - ESLint
 
@@ -23,8 +21,6 @@ institucional que é do próprio site.
 
 ```bash
 npm install
-npm run db:migrate    # cria o banco SQLite local (prisma/dev.db) a partir do schema
-npm run db:seed       # popula com os dados já confirmados (unidades, equipe, documentos)
 npm run dev
 ```
 
@@ -37,20 +33,6 @@ npm run build
 npm start
 ```
 
-### Banco de dados — comandos úteis
-
-```bash
-npm run db:migrate    # aplica o schema (prisma/schema.prisma) ao banco
-npm run db:seed       # popula/atualiza os dados iniciais (prisma/seed.ts) — idempotente, pode rodar de novo
-npm run db:studio     # abre uma interface visual para ver/editar os dados do banco no navegador
-```
-
-O arquivo do banco fica em `prisma/dev.db` (SQLite), definido por `DATABASE_URL`
-no `.env`. Como você escolheu hospedar em VPS/servidor próprio com disco
-persistente, esse arquivo local funciona bem em produção — só garanta que ele
-esteja num volume que sobrevive a redeploys (fora da pasta que o `git pull`/CI
-recria do zero).
-
 ### Lint
 
 ```bash
@@ -59,49 +41,43 @@ npm run lint
 
 > Este projeto foi desenvolvido em um ambiente sem acesso à internet/registro
 > npm, então as dependências **não foram instaladas nem o build foi
-> executado** durante a geração dos arquivos (isso inclui o Prisma — o
-> `schema.prisma` e o `seed.ts` não puderam ser validados com `prisma
-> generate`/`migrate` de verdade). Rode os comandos acima no seu ambiente e
-> corrija eventuais erros de versão de pacote antes de publicar.
+> executado** durante a geração dos arquivos. Rode os comandos acima no seu
+> ambiente e corrija eventuais erros de versão de pacote antes de publicar.
 
 ## Estrutura de diretórios
 
 ```
-Dockerfile                 # build multi-stage (Next.js standalone + Prisma)
+Dockerfile                 # build multi-stage (Next.js standalone)
 docker-compose.yml          # stack para Rancher/VPS
-docker-entrypoint.sh         # roda db push + seed antes de subir o servidor
-
-prisma/
-├── schema.prisma         # modelos do banco (Documento, Unidade, MembroEquipe, ConteudoTexto)
-└── seed.ts                # dados iniciais (idempotente)
 
 src/
 ├── app/
-│   └── api/                # rotas de API (documentos, unidades, equipe)
+│   └── api/                # rotas de API (documentos, unidades, equipe, manifestações)
 ├── components/              # componentes reutilizáveis
-├── data/                    # dados estáticos que ainda não migraram para o banco
+├── data/                    # todo o conteúdo do site (unidades, equipe, documentos por
+│                            # ano, textos institucionais, planos, notícias etc.)
 └── lib/
-    ├── constants.ts         # constantes institucionais (contato, links, menu)
-    └── prisma.ts             # cliente Prisma (singleton)
+    └── constants.ts         # constantes institucionais (contato, links, menu)
 ```
 
 ## O que já foi adicionado nesta entrega
 
 - **Nossa História** (`/institucional/historia`): texto de fundação (15/03/1993,
-  Santa Casa de Itabuna, modalidade hospitalar) — vem do banco
-  (`ConteudoTexto`, slug `historia`), editável sem mexer em código.
+  Santa Casa de Itabuna, modalidade hospitalar) — vem de
+  `src/data/conteudoInstitucional.ts`, editável sem precisar de banco.
 - **Nossa Equipe** (`/institucional/equipe`): Dr. Eric Ettinger Júnior
   (Diretor Médico) e Celso Roberto dos Santos (Gestor), com foto e depoimento
-  — dados no banco (`MembroEquipe`). As fotos já recebidas estão em
+  — dados em `src/data/equipe.ts`. As fotos já recebidas estão em
   `public/equipe/`.
 - **Nossas Unidades** (`/institucional/unidades`): unidade Itabuna com
-  endereço e telefone oficiais — dado no banco (`Unidade`). O telefone e
+  endereço e telefone oficiais — dado em `src/data/unidades.ts`. O telefone e
   endereço também já atualizam o rodapé/atendimento em `src/lib/constants.ts`.
 - **IDSS** (`/institucional/idss`) e **Reajuste de Contratos Coletivos**
   (`/institucional/reajustes`): páginas novas, cada uma listando os anos
-  configurados com botão de download em PDF — dado no banco (`Documento`).
-  IDSS também traz um botão de direcionamento para o Portal ANS. Ambas foram
-  adicionadas ao menu principal (Header) e ao rodapé.
+  configurados com botão de download em PDF — dado em
+  `src/data/documentosPorAno.ts`. IDSS também traz um botão de
+  direcionamento para o Portal ANS. Ambas foram adicionadas ao menu
+  principal (Header) e ao rodapé.
 
 ## PDFs dos documentos — status atual
 
@@ -112,10 +88,11 @@ categoria e ano antes de cadastrar:
   de fato, comunicados RN 309/ANS de reajuste — e cobrem **2017 a 2026** (o
   arquivo "Corrigido2026" é a versão corrigida do comunicado daquele ano).
   Como isso é mais amplo que o intervalo 2021–2026 pedido originalmente, os
-  anos de 2017 a 2020 foram adicionados ao banco (`prisma/seed.ts`) porque os
-  PDFs comprovam que existem — nenhum dado foi inventado, só ampliamos a
-  faixa para bater com os documentos reais recebidos. Os 10 arquivos estão em
-  `public/documentos/reajustes/` e já linkados em cada ano correspondente.
+  anos de 2017 a 2020 foram adicionados em `src/data/documentosPorAno.ts`
+  porque os PDFs comprovam que existem — nenhum dado foi inventado, só
+  ampliamos a faixa para bater com os documentos reais recebidos. Os 10
+  arquivos estão em `public/documentos/reajustes/` e já linkados em cada ano
+  correspondente.
 - **IDSS**: 3 PDFs recebidos até agora — 2022, 2023 e 2025 (capturas da
   consulta pública do Portal ANS, com a pontuação IDSS de cada ano-base).
   Estão em `public/documentos/idss/` e já linkados. Os demais anos do
@@ -123,9 +100,8 @@ categoria e ano antes de cadastrar:
   e mostram "PDF em breve" até chegarem.
 
 Quando mais arquivos de IDSS chegarem: copie o PDF para
-`public/documentos/idss/idss-<ano>.pdf`, adicione o caminho no objeto
-`arquivosIdss` em `prisma/seed.ts` e rode `npm run db:seed` de novo (o seed é
-idempotente e também atualiza `arquivoUrl` de linhas já existentes).
+`public/documentos/idss/idss-<ano>.pdf` e adicione o caminho no objeto
+`arquivosIdss` em `src/data/documentosPorAno.ts`.
 
 ## Conteúdo ainda pendente (placeholders)
 
@@ -172,9 +148,8 @@ Lighthouse antes de publicar.
 
 ## Deploy com Docker / Rancher
 
-O projeto inclui `Dockerfile`, `docker-compose.yml`, `.dockerignore` e
-`docker-entrypoint.sh` prontos para rodar como um stack no Rancher (ou
-`docker compose` puro num VPS).
+O projeto inclui `Dockerfile`, `docker-compose.yml` e `.dockerignore` prontos
+para rodar como um stack no Rancher (ou `docker compose` puro num VPS).
 
 ### 1. Preencha as variáveis antes de buildar
 
@@ -199,10 +174,8 @@ docker compose up -d
 docker compose logs -f web
 ```
 
-Abra http://localhost:3000 — no primeiro start, o `docker-entrypoint.sh` roda
-automaticamente `prisma db push` (cria as tabelas no banco) e o seed (popula
-unidades/equipe/documentos), então já sobe com os dados que confirmamos nesta
-conversa.
+Abra http://localhost:3000 — como o conteúdo vem de `src/data/`, o container já
+sobe pronto, sem nenhum passo de inicialização de banco.
 
 ### 3. No Rancher
 
@@ -212,19 +185,10 @@ conversa.
 - **Via imagem já buildada**: se preferir buildar a imagem num pipeline de CI
   e só apontar o Rancher para ela, publique a imagem (`docker build -t
   seu-registry/plansul-site:tag .` e `docker push`) e crie o Workload no
-  Rancher apontando pra essa tag, replicando as mesmas `environment` e
-  `volumes` do `docker-compose.yml` (principalmente o volume em `/app/data` —
-  sem ele, o banco SQLite se perde a cada redeploy).
-
-### Persistência do banco
-
-O SQLite fica em `/app/data/dev.db` **dentro do container**, montado a partir
-do volume nomeado `plansul_db_data` (definido no `docker-compose.yml`). Isso é
-o que garante que o banco sobrevive a um `docker compose up` novo, restart do
-container ou redeploy da imagem. Sem esse volume — ou se o Rancher recriar o
-volume do zero — o banco volta vazio e o entrypoint recria as tabelas e
-resemeia os dados iniciais, mas qualquer dado adicionado manualmente depois
-(fora do `seed.ts`) seria perdido.
+  Rancher apontando pra essa tag, replicando as mesmas `environment` do
+  `docker-compose.yml`. Não precisa de volume — não há banco/estado para
+  persistir; qualquer atualização de conteúdo é feita editando `src/data/` e
+  publicando uma nova imagem.
 
 ### Sobre o Dockerfile (o que rodou e o que não pôde ser testado aqui)
 
@@ -238,7 +202,6 @@ ser verificado:
   Docker Hub).
 - O **`docker-compose.yml` é válido** — validei com `docker compose config`,
   que interpretou e renderizou o stack inteiro sem erros.
-- O **`docker-entrypoint.sh` tem sintaxe válida** (`sh -n`).
 
 Ainda assim, um build real (`docker compose build`) pode revelar ajustes
 necessários que só aparecem executando de verdade — rode localmente antes de
@@ -251,10 +214,9 @@ para `npm ci` no `Dockerfile` (mais rápido e reprodutível).
 
 ## Limitações desta entrega
 
-- Dependências não foram instaladas nem o build (Next.js, Prisma ou Docker)
-  foram totalmente testados neste ambiente (sem acesso à internet/registro) —
-  rode os comandos das seções acima localmente e corrija eventuais erros de
-  versão de pacote.
+- O build via Docker ainda não foi totalmente testado neste ambiente (sem
+  acesso a registro de containers) — rode os comandos das seções acima
+  localmente e corrija eventuais erros de versão de pacote.
 - Faltam PDFs de IDSS para 2018–2021, 2024 e 2026 — ver seção específica acima.
 - Testes automatizados, CI/CD e monitoramento ainda não configurados.
 

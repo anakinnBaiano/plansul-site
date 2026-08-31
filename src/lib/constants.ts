@@ -17,7 +17,7 @@ export const SITE = {
 
 export const CONTACT = {
   // Central de atendimento — mesmo número da unidade Itabuna (cadastrado em
-  // prisma/seed.ts / Unidade).
+  // src/data/unidades.ts).
   phone: "(73) 3214-3800",
   phoneHref: "tel:+557332143800",
   whatsapp: "(73) 3214-3806",

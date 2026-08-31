@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { unidades } from "@/data/unidades";
 
 export async function GET() {
-  const unidades = await prisma.unidade.findMany({
-    orderBy: { ordem: "asc" },
-  });
-
-  return NextResponse.json(unidades);
+  const ordenadas = [...unidades].sort((a, b) => a.ordem - b.ordem);
+  return NextResponse.json(ordenadas);
 }

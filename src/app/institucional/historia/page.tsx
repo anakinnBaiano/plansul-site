@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import Timeline from "@/components/Timeline";
-import { prisma } from "@/lib/prisma";
+import { getConteudoTexto } from "@/data/conteudoInstitucional";
 
 export const metadata: Metadata = { title: "Nossa história" };
 
-export const dynamic = "force-dynamic";
-
-export default async function HistoriaPage() {
-  const conteudo = await prisma.conteudoTexto.findUnique({
-    where: { slug: "historia" },
-  });
+export default function HistoriaPage() {
+  const conteudo = getConteudoTexto("historia");
 
   const timelineItems = conteudo
     ? [
@@ -20,7 +16,7 @@ export default async function HistoriaPage() {
           descricao: conteudo.corpo,
         },
         // [PREENCHER] novos marcos entram aqui conforme forem confirmados
-        // (ver prisma/seed.ts — tabela ConteudoTexto / Documento).
+        // (ver src/data/conteudoInstitucional.ts e src/data/documentosPorAno.ts).
       ]
     : [];
 
