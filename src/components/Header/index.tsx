@@ -43,22 +43,21 @@ export default function Header() {
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-plansul-blue to-plansul-teal"
       />
-      <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Página inicial da Plansul">
+      <div className="mx-auto flex h-16 max-w-content items-center px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Página inicial da Plansul">
           <Image
             src="/logo-plansul.png"
             alt="Plansul"
-            width={36}
-            height={36}
-            className="h-9 w-9"
+            width={429}
+            height={189}
+            className="h-12 w-auto"
             priority
           />
-          <span className="text-lg font-bold text-plansul-blue">Plansul</span>
         </Link>
 
         {/* Navegação desktop */}
-        <nav aria-label="Navegação principal" className="hidden min-w-0 2xl:ml-10 2xl:block">
-          <ul className="flex items-center gap-x-4 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-6 2xl:text-sm">
+        <nav aria-label="Navegação principal" className="hidden min-w-0 2xl:ml-6 2xl:block">
+          <ul className="flex items-center gap-x-3 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-4 2xl:text-sm">
             {NAV_LINKS.map((link) =>
               link.external ? (
                 <li key={link.href}>
@@ -90,7 +89,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden shrink-0 2xl:block">
+        <div className="ml-auto hidden shrink-0 2xl:block">
           <a
             href={EXTERNAL_LINKS.portalBeneficiario}
             target="_blank"
@@ -104,7 +103,7 @@ export default function Header() {
         {/* Botão hambúrguer mobile/tablet */}
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-plansul-blue 2xl:hidden"
+          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-lg text-plansul-blue 2xl:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="menu-mobile"
