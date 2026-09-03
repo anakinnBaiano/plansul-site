@@ -5,6 +5,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Faz o `hover:` só disparar em ponteiros que sustentam hover de verdade
+  // (mouse) — em telas de toque, um "tap" não fica com o estado de hover
+  // grudado até o usuário tocar em outro lugar.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
