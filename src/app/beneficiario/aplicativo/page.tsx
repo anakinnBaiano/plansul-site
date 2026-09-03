@@ -15,7 +15,9 @@ export default function AplicativoPage() {
     <>
       <Breadcrumb items={[{ label: "Beneficiário", href: "/beneficiario" }, { label: "Aplicativo" }]} />
       <section className="mx-auto max-w-content px-4 pb-24 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-plansul-blue">Aplicativo Plansul</h1>
+        <h1 className="text-3xl font-bold text-plansul-blue">
+          Aplicativo Plan<span className="text-plansul-teal">sul</span>
+        </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
           Baixe o aplicativo do beneficiário Plansul e tenha carteirinha digital, boletos e
           autorizações sempre à mão.

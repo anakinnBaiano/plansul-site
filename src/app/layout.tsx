@@ -3,6 +3,7 @@ import { Archivo, Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { SITE, CONTACT, EXTERNAL_LINKS } from "@/lib/constants";
 
 // Substitui a "Inter" (declarada em globals.css mas nunca carregada de fato —
@@ -102,6 +103,7 @@ export default function RootLayout({
           />
         </section>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

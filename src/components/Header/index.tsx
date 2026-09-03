@@ -38,18 +38,19 @@ export default function Header() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur">
       <span
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-plansul-blue to-plansul-teal"
       />
-      <div className="mx-auto flex h-16 max-w-content items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-[1360px] items-center px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center" aria-label="Página inicial da Plansul">
           <Image
             src="/logo-plansul.png"
             alt="Plansul"
-            width={429}
-            height={189}
+            width={1405}
+            height={375}
             className="h-12 w-auto"
             priority
           />
@@ -112,60 +113,64 @@ export default function Header() {
           {open ? <X size={26} aria-hidden="true" /> : <Menu size={26} aria-hidden="true" />}
         </button>
       </div>
-
-      {/* Drawer mobile/tablet */}
-      <div
-        id="menu-mobile"
-        className={cn(
-          "fixed inset-0 top-16 z-40 bg-white 2xl:hidden",
-          open ? "block" : "hidden"
-        )}
-      >
-        <nav aria-label="Navegação mobile" className="flex h-full flex-col justify-between overflow-y-auto px-4 pb-8 pt-4">
-          <ul className="flex flex-col divide-y divide-slate-100 text-base">
-            {NAV_LINKS.map((link) =>
-              link.external ? (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
-                    className="block min-h-[48px] py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ) : (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="flex min-h-[48px] items-center gap-1.5 py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
-                  >
-                    {link.label}
-                    {link.label === "Notícias Plansul" && TEM_NOTICIA_ALERTA && (
-                      <span aria-hidden="true" className="motion-safe:animate-blink">
-                        ⚠️
-                      </span>
-                    )}
-                  </Link>
-                </li>
-              )
-            )}
-          </ul>
-
-          <a
-            href={EXTERNAL_LINKS.portalBeneficiario}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-6 flex min-h-[48px] items-center justify-center rounded-full bg-plansul-blue px-5 py-3 text-base font-semibold text-white"
-          >
-            Portal do Beneficiário
-          </a>
-        </nav>
-      </div>
     </header>
+
+    {/* Drawer mobile/tablet — fora do <header> de propósito: o header usa
+        backdrop-blur (backdrop-filter), que no Chrome vira containing block
+        para descendentes fixed e espremia esse drawer dentro dos 64px do
+        header (altura 0, nada visível). */}
+    <div
+      id="menu-mobile"
+      className={cn(
+        "fixed inset-0 top-16 z-[60] bg-white 2xl:hidden",
+        open ? "block" : "hidden"
+      )}
+    >
+      <nav aria-label="Navegação mobile" className="flex h-full flex-col justify-between overflow-y-auto px-4 pb-8 pt-4">
+        <ul className="flex flex-col divide-y divide-slate-100 text-base">
+          {NAV_LINKS.map((link) =>
+            link.external ? (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="block min-h-[48px] py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ) : (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-[48px] items-center gap-1.5 py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
+                >
+                  {link.label}
+                  {link.label === "Notícias Plansul" && TEM_NOTICIA_ALERTA && (
+                    <span aria-hidden="true" className="motion-safe:animate-blink">
+                      ⚠️
+                    </span>
+                  )}
+                </Link>
+              </li>
+            )
+          )}
+        </ul>
+
+        <a
+          href={EXTERNAL_LINKS.portalBeneficiario}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+          className="mt-6 flex min-h-[48px] items-center justify-center rounded-full bg-plansul-blue px-5 py-3 text-base font-semibold text-white"
+        >
+          Portal do Beneficiário
+        </a>
+      </nav>
+    </div>
+    </>
   );
 }

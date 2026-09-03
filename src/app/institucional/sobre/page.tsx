@@ -19,7 +19,9 @@ export default function SobreEmpresaPage() {
     <>
       <Breadcrumb items={[{ label: "Institucional", href: "/institucional" }, { label: "Sobre a Empresa" }]} />
       <section className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-plansul-blue">Sobre a Plansul</h1>
+        <h1 className="text-3xl font-bold text-plansul-blue">
+          Sobre a Plan<span className="text-plansul-teal">sul</span>
+        </h1>
         <p className="mt-3 max-w-2xl text-lg text-slate-600">
           Cuidar de você é o nosso plano.
         </p>

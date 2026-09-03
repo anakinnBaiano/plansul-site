@@ -8,7 +8,9 @@ export default function Footer() {
     <footer className="border-t border-slate-800 bg-plansul-blue-dark text-slate-200">
       <div className="mx-auto grid max-w-content gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div>
-          <p className="text-xl font-bold text-white">PLANSUL</p>
+          <p className="text-xl font-bold text-white">
+            PLAN<span className="text-plansul-teal-light">SUL</span>
+          </p>
           <p className="mt-3 text-sm text-slate-300">{SITE.tagline}</p>
         </div>
 

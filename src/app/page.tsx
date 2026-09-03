@@ -7,7 +7,12 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        eyebrow="Bem-vindo ao Plansul"
+        eyebrow={
+          <>
+            Bem-vindo ao <span className="text-plansul-blue">Plan</span>
+            <span className="text-plansul-teal">sul</span>
+          </>
+        }
         title="Nosso plano é cuidar do seu bem estar"
         subtitle="Saúde, atendimento e cuidado próximos de você."
         primaryCta={{ label: "Sou beneficiário", href: "/beneficiario" }}

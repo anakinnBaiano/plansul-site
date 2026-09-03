@@ -13,7 +13,9 @@ export default function OuvidoriaPage() {
     <>
       <Breadcrumb items={[{ label: "Ouvidoria" }]} />
       <section className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-plansul-blue">Ouvidoria Plansul</h1>
+        <h1 className="text-3xl font-bold text-plansul-blue">
+          Ouvidoria Plan<span className="text-plansul-teal">sul</span>
+        </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
           Sua opinião ajuda a melhorar nossos serviços.
         </p>
