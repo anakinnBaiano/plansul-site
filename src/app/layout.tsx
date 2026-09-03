@@ -42,11 +42,13 @@ export const metadata: Metadata = {
     title: `${SITE.name} — ${SITE.tagline}`,
     description: "Saúde, atendimento e cuidado próximos de você.",
     url: SITE.url,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description: "Saúde, atendimento e cuidado próximos de você.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
