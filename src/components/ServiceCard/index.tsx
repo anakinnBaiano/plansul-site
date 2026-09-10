@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type ServiceCardProps = {
   icon: LucideIcon;
@@ -8,6 +9,9 @@ type ServiceCardProps = {
   descricao: string;
   href: string;
   external?: boolean;
+  // Usado em seções com fundo colorido (azul/verde-água), onde a borda azul
+  // do hover padrão some contra o fundo — troca pra branca nesses casos.
+  hoverBorderWhite?: boolean;
 };
 
 export default function ServiceCard({
@@ -16,6 +20,7 @@ export default function ServiceCard({
   descricao,
   href,
   external,
+  hoverBorderWhite,
 }: ServiceCardProps) {
   // Links de telefone/e-mail não devem abrir em nova aba.
   const isDirectScheme = href.startsWith("tel:") || href.startsWith("mailto:");
@@ -42,8 +47,12 @@ export default function ServiceCard({
     </>
   );
 
-  const className =
-    "group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-plansul-blue hover:bg-gradient-to-br hover:from-plansul-blue hover:to-plansul-teal hover:shadow-lg focus-visible:-translate-y-0.5 focus-visible:border-plansul-blue focus-visible:bg-gradient-to-br focus-visible:from-plansul-blue focus-visible:to-plansul-teal focus-visible:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal";
+  const className = cn(
+    "group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-gradient-to-br hover:from-plansul-blue hover:to-plansul-teal hover:shadow-lg focus-visible:-translate-y-0.5 focus-visible:bg-gradient-to-br focus-visible:from-plansul-blue focus-visible:to-plansul-teal focus-visible:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal",
+    hoverBorderWhite
+      ? "hover:border-white focus-visible:border-white"
+      : "hover:border-plansul-blue focus-visible:border-plansul-blue"
+  );
 
   if (isDirectScheme) {
     return (

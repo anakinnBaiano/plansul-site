@@ -41,6 +41,7 @@ export default function QuickAccess() {
                 descricao={item.descricao}
                 href={item.href}
                 external={item.external}
+                hoverBorderWhite
               />
             </li>
           ))}
