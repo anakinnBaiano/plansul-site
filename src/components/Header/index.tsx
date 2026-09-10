@@ -58,7 +58,7 @@ export default function Header() {
 
         {/* Navegação desktop */}
         <nav aria-label="Navegação principal" className="hidden min-w-0 flex-1 2xl:ml-6 2xl:block">
-          <ul className="flex items-center justify-end gap-x-3 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-4 2xl:text-sm">
+          <ul className="flex items-center gap-x-3 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-4 2xl:text-sm">
             {NAV_LINKS.map((link) =>
               link.external ? (
                 <li key={link.href}>
