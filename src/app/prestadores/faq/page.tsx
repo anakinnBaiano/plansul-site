@@ -3,50 +3,52 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { EXTERNAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Perguntas Frequentes",
-  description: "Respostas para as dúvidas mais comuns sobre a Plansul.",
+  title: "FAQ do Prestador",
+  description: "Respostas para as dúvidas mais comuns de prestadores e empresas credenciadas.",
 };
 
 // [PREENCHER] substituir pelas perguntas e respostas oficiais aprovadas pela Plansul.
 const faqs = [
   {
-    pergunta: "Como posso acessar o Portal do Beneficiário?",
+    pergunta: "Como acesso o Portal do Prestador?",
     resposta: (
       <>
         Acesse o{" "}
         <a
-          href={EXTERNAL_LINKS.portalBeneficiario}
+          href={EXTERNAL_LINKS.portalPrestador}
           target="_blank"
           rel="noopener noreferrer"
           className="font-semibold text-plansul-blue hover:underline"
         >
-          Portal do Beneficiário
+          Portal do Prestador
         </a>{" "}
         e informe seu usuário e senha para entrar.
       </>
     ),
   },
   {
-    pergunta: "Como solicito uma autorização de exame ou procedimento?",
-    resposta: "Atendimento presencial na unidade de Itabuna ou ligando para o número (73) 3214-3800.",
+    pergunta: "Como solicito ou consulto autorizações de procedimentos?",
+    resposta: "As solicitações e consultas de autorizações são feitas diretamente pelo Portal do Prestador.",
   },
   {
-    pergunta: "Como encontro um médico da rede credenciada?",
-    resposta: "Você pode entrar na área de Guia Médico ou ligando para nosso canal de atendimento no (73) 3214-3800.",
+    pergunta: "Como minha empresa se credencia à rede Plansul?",
+    resposta: "Entre em contato pelo canal de atendimento (73) 3214-3800 para iniciar o processo de credenciamento.",
   },
   {
-    pergunta: "Como entro em contato com a Ouvidoria?",
-    resposta:
-      "Pelo e-mail ouvidoria@plansul.net ou ligando para (73) 3214-3800, ramal 3804.",
+    pergunta: "Onde encontro comunicados e avisos oficiais para prestadores?",
+    resposta: "Na área de Avisos, dentro da seção Prestadores.",
   },
 ];
 
-export default function FaqPage() {
+export default function PrestadorFaqPage() {
   return (
     <>
-      <Breadcrumb items={[{ label: "Atendimento", href: "/atendimento" }, { label: "FAQ" }]} />
+      <Breadcrumb items={[{ label: "Prestadores", href: "/prestadores" }, { label: "FAQ" }]} />
       <section className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-plansul-blue">Perguntas Frequentes</h1>
+        <h1 className="text-3xl font-bold text-plansul-blue">FAQ do Prestador</h1>
+        <p className="mt-3 max-w-2xl text-slate-600">
+          Dúvidas frequentes para prestadores e empresas credenciadas à rede Plansul.
+        </p>
 
         <div className="mt-8 divide-y divide-slate-200 rounded-2xl border border-slate-200">
           {faqs.map((item) => (

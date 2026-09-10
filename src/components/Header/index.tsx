@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS, EXTERNAL_LINKS } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import { noticias, isCategoriaAlerta } from "@/data/noticias";
 import { cn } from "@/lib/utils";
 
 const TEM_NOTICIA_ALERTA = noticias.some((n) => isCategoriaAlerta(n.categoria));
 
-// O menu desktop tem 9 itens (incluindo IDSS, Reajustes e Notícias Plansul).
+// O menu desktop tem 9 itens (incluindo IDSS, Reajustes e Avisos).
 // Em "xl" (1280px) ele até cabe, mas espremido a ponto de o próprio menu
 // invadir o botão "Portal do Beneficiário" — por isso a troca pra navegação
 // mobile (hambúrguer/drawer) só acontece em "2xl" (1536px), faixa em que
@@ -57,8 +57,8 @@ export default function Header() {
         </Link>
 
         {/* Navegação desktop */}
-        <nav aria-label="Navegação principal" className="hidden min-w-0 2xl:ml-6 2xl:block">
-          <ul className="flex items-center gap-x-3 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-4 2xl:text-sm">
+        <nav aria-label="Navegação principal" className="hidden min-w-0 flex-1 2xl:ml-6 2xl:block">
+          <ul className="flex items-center justify-end gap-x-3 gap-y-1 text-[13px] font-medium text-slate-700 2xl:gap-x-4 2xl:text-sm">
             {NAV_LINKS.map((link) =>
               link.external ? (
                 <li key={link.href}>
@@ -78,7 +78,7 @@ export default function Header() {
                     className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm transition-colors hover:text-plansul-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal"
                   >
                     {link.label}
-                    {link.label === "Notícias Plansul" && TEM_NOTICIA_ALERTA && (
+                    {link.label === "Avisos" && TEM_NOTICIA_ALERTA && (
                       <span aria-hidden="true" className="motion-safe:animate-blink">
                         ⚠️
                       </span>
@@ -90,15 +90,13 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="ml-auto hidden shrink-0 2xl:block">
-          <a
-            href={EXTERNAL_LINKS.portalBeneficiario}
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="ml-4 hidden shrink-0 2xl:block">
+          <Link
+            href="/beneficiario/portal"
             className="whitespace-nowrap rounded-full bg-plansul-blue px-4 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-plansul-blue-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-blue 2xl:px-5 2xl:text-sm"
           >
             Portal do Beneficiário
-          </a>
+          </Link>
         </div>
 
         {/* Botão hambúrguer mobile/tablet */}
@@ -149,7 +147,7 @@ export default function Header() {
                   className="flex min-h-[48px] items-center gap-1.5 py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
                 >
                   {link.label}
-                  {link.label === "Notícias Plansul" && TEM_NOTICIA_ALERTA && (
+                  {link.label === "Avisos" && TEM_NOTICIA_ALERTA && (
                     <span aria-hidden="true" className="motion-safe:animate-blink">
                       ⚠️
                     </span>
@@ -160,15 +158,13 @@ export default function Header() {
           )}
         </ul>
 
-        <a
-          href={EXTERNAL_LINKS.portalBeneficiario}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/beneficiario/portal"
           onClick={() => setOpen(false)}
           className="mt-6 flex min-h-[48px] items-center justify-center rounded-full bg-plansul-blue px-5 py-3 text-base font-semibold text-white"
         >
           Portal do Beneficiário
-        </a>
+        </Link>
       </nav>
     </div>
     </>

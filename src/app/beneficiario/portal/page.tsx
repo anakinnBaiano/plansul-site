@@ -13,7 +13,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { EXTERNAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Beneficiário",
+  title: "Portal do Beneficiário",
   description: "Tudo o que você precisa em um só lugar: portal, guia médico, autorizações e mais.",
 };
 
@@ -64,10 +64,10 @@ const cards = [
   },
 ];
 
-export default function BeneficiarioPage() {
+export default function PortalBeneficiarioPage() {
   return (
     <>
-      <Breadcrumb items={[{ label: "Beneficiário" }]} />
+      <Breadcrumb items={[{ label: "Beneficiário", href: "/beneficiario" }, { label: "Portal do Beneficiário" }]} />
       <section className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-plansul-blue">
           Tudo o que você precisa em um só lugar.

@@ -17,7 +17,7 @@ export default function HomePage() {
         subtitle="Saúde, atendimento e cuidado próximos de você."
         primaryCta={{ label: "Sou beneficiário", href: "/beneficiario" }}
         secondaryCta={{ label: "Quero contratar um plano", href: "/planos" }}
-        newsCta={{ label: "Notícias Plansul", href: "/noticias" }}
+        newsCta={{ label: "Avisos", href: "/noticias" }}
         images={["/hero-familia.jpg", "/hero1.jpeg", "/hero3.jpeg"]}
         imageAlt="Família caminhando e sorrindo em um parque arborizado"
       />

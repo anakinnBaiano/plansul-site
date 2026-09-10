@@ -32,6 +32,19 @@ export const CONTACT = {
   whatsappPlanosHref:
     "https://api.whatsapp.com/send/?phone=557332143809&text=Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos+de+sa%C3%BAde+da+Plansul&type=phone_number&app_absent=0",
   email: "autorizacaoitb@plansul.net",
+  // E-mail para agendamento de avaliação com o profissional de terapia
+  // (Centro Médico Plansul).
+  terapiaEmail: "autorizacao.terapia@plansul.net",
+  // E-mail oficial da Cobrança — mesmo canal citado nos comunicados de
+  // cobrança enviados aos beneficiários.
+  cobrancaEmail: "Cobranca@plansul.net",
+  // Equipe de Cadastro: atualização de telefone, WhatsApp, e-mail e demais
+  // dados cadastrais dos beneficiários.
+  cadastro: {
+    phone: "(73) 3214-3821",
+    phoneHref: "tel:+557332143821",
+    email: "cadastro@plansul.net",
+  },
   ouvidoriaEmail: "ouvidoria@plansul.net",
   address: "R. Santa Cruz, S/N – Nossa Sra. de Fátima, Itabuna – BA, CEP 45603-305",
   hours: "Segunda a sexta, das 07h às 18h",
@@ -70,14 +83,14 @@ export const NAV_LINKS = [
   { label: "Planos", href: "/#planos-heading" },
   { label: "Empresas", href: "/empresas" },
   { label: "Prestadores", href: "/prestadores" },
-  { label: "Rede Credenciada", href: EXTERNAL_LINKS.guiaMedico, external: true },
+  { label: "Guia Médico", href: EXTERNAL_LINKS.guiaMedico, external: true },
   { label: "Institucional", href: "/institucional" },
   { label: "IDSS", href: "/institucional/idss" },
   // Rótulo abreviado só no menu (a página usa o nome completo no título) —
   // com o nome inteiro o menu desktop não cabe nem em telas grandes.
   { label: "Reajustes", href: "/institucional/reajustes" },
   { label: "Atendimento", href: "/atendimento" },
-  { label: "Notícias Plansul", href: "/noticias" },
+  { label: "Avisos", href: "/noticias" },
 ];
 
 export const FOOTER_LINKS = {
@@ -89,7 +102,7 @@ export const FOOTER_LINKS = {
     { label: "Beneficiário", href: "/beneficiario" },
     { label: "Empresas", href: "/empresas" },
     { label: "Prestadores", href: "/prestadores" },
-    { label: "Notícias Plansul", href: "/noticias" },
+    { label: "Avisos", href: "/noticias" },
   ],
   institucionalExtra: [
     { label: "Contato", href: "/atendimento/contato" },

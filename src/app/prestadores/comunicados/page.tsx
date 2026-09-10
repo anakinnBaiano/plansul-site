@@ -3,14 +3,14 @@ import Breadcrumb from "@/components/Breadcrumb";
 import NoticiaList from "@/components/NoticiaList";
 
 export const metadata: Metadata = {
-  title: "Notícias Plansul",
+  title: "Avisos",
   description: "Novidades, comunicados e notícias da Plansul.",
 };
 
 export default function ComunicadosPage() {
   return (
     <>
-      <Breadcrumb items={[{ label: "Prestadores", href: "/prestadores" }, { label: "Notícias Plansul" }]} />
+      <Breadcrumb items={[{ label: "Prestadores", href: "/prestadores" }, { label: "Avisos" }]} />
       <section className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-plansul-blue">
           Notícias Plan<span className="text-plansul-teal">sul</span>

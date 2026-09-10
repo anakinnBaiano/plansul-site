@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FileCheck2, FileStack, Megaphone } from "lucide-react";
+import { CircleHelp, FileCheck2, Megaphone } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ServiceCard from "@/components/ServiceCard";
 import { EXTERNAL_LINKS } from "@/lib/constants";
@@ -18,14 +18,13 @@ const cards = [
     icon: FileCheck2,
   },
   {
-    titulo: "Autorizações",
-    descricao: "Consulte e solicite autorizações de procedimentos.",
-    href: EXTERNAL_LINKS.portalPrestador,
-    external: true,
-    icon: FileStack,
+    titulo: "FAQ",
+    descricao: "Dúvidas frequentes para prestadores e empresas credenciadas.",
+    href: "/prestadores/faq",
+    icon: CircleHelp,
   },
   {
-    titulo: "Notícias Plansul",
+    titulo: "Avisos",
     descricao: "Fique por dentro dos avisos oficiais para a rede credenciada.",
     href: "/prestadores/comunicados",
     icon: Megaphone,
