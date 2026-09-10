@@ -75,10 +75,7 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={cn(
-                      "inline-flex items-center gap-1 whitespace-nowrap rounded-sm transition-colors hover:text-plansul-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal",
-                      link.label === "Avisos" && "text-red-600 hover:text-red-700"
-                    )}
+                    className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm transition-colors hover:text-plansul-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plansul-teal"
                   >
                     {link.label}
                     {link.label === "Avisos" && TEM_NOTICIA_ALERTA && (
@@ -147,10 +144,7 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={cn(
-                    "flex min-h-[48px] items-center gap-1.5 py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal",
-                    link.label === "Avisos" && "text-red-600"
-                  )}
+                  className="flex min-h-[48px] items-center gap-1.5 py-3 font-medium text-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal"
                 >
                   {link.label}
                   {link.label === "Avisos" && TEM_NOTICIA_ALERTA && (
