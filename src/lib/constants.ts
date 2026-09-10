@@ -56,12 +56,12 @@ export const CONTACT = {
 
 export const EXTERNAL_LINKS = {
   portalBeneficiario:
-    process.env.NEXT_PUBLIC_PORTAL_BENEFICIARIO_URL || "#portal-beneficiario",
+    process.env.NEXT_PUBLIC_PORTAL_BENEFICIARIO_URL || "https://portal.apps.plansul.net/",
   portalEmpresa:
-    process.env.NEXT_PUBLIC_PORTAL_EMPRESA_URL || "#portal-empresa",
+    process.env.NEXT_PUBLIC_PORTAL_EMPRESA_URL || "https://portal.apps.plansul.net/",
   portalPrestador:
     process.env.NEXT_PUBLIC_PORTAL_PRESTADOR_URL || "#portal-prestador",
-  guiaMedico: process.env.NEXT_PUBLIC_GUIA_MEDICO_URL || "#guia-medico",
+  guiaMedico: process.env.NEXT_PUBLIC_GUIA_MEDICO_URL || "https://guiamedico.apps.plansul.net/",
   ans: "https://www.gov.br/ans/pt-br",
   googleMapsEmbed: "https://www.google.com/maps?cid=419296120835816008&output=embed",
 };
