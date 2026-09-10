@@ -60,7 +60,7 @@ export const EXTERNAL_LINKS = {
   portalEmpresa:
     process.env.NEXT_PUBLIC_PORTAL_EMPRESA_URL || "https://portal.apps.plansul.net/",
   portalPrestador:
-    process.env.NEXT_PUBLIC_PORTAL_PRESTADOR_URL || "#portal-prestador",
+    process.env.NEXT_PUBLIC_PORTAL_PRESTADOR_URL || "https://mv.plansul.net/mvautorizadorguias/",
   guiaMedico: process.env.NEXT_PUBLIC_GUIA_MEDICO_URL || "https://guiamedico.apps.plansul.net/",
   ans: "https://www.gov.br/ans/pt-br",
   googleMapsEmbed: "https://www.google.com/maps?cid=419296120835816008&output=embed",
