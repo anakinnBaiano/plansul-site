@@ -52,7 +52,7 @@ export default function Footer() {
           </h2>
           <ul className="mt-4 space-y-2 text-sm">
             {FOOTER_LINKS.portais.map((link) => (
-              <li key={link.href}>
+              <li key={link.label}>
                 <a
                   href={link.href}
                   target="_blank"

@@ -20,11 +20,14 @@ const ICONS: Record<QuickAccessIcon, typeof User> = {
 
 export default function QuickAccess() {
   return (
-    <section aria-labelledby="como-ajudar-heading" className="bg-slate-50">
+    <section
+      aria-labelledby="como-ajudar-heading"
+      className="bg-gradient-to-br from-plansul-blue-dark via-plansul-blue to-plansul-teal"
+    >
       <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
         <h2
           id="como-ajudar-heading"
-          className="text-center text-2xl font-bold text-plansul-blue sm:text-3xl"
+          className="text-center text-2xl font-bold text-white sm:text-3xl"
         >
           Como podemos ajudar?
         </h2>
