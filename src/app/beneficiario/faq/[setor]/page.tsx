@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import { faqSetores } from "@/data/faqBeneficiario";
 
@@ -54,25 +55,53 @@ export default function FaqSetorPage({ params }: Props) {
             </div>
           )}
 
-          {setor.categorias.map((categoria, categoriaIndex) => (
-            <div key={categoria.titulo ?? categoriaIndex}>
-              {categoria.titulo && (
-                <h2 className="mb-3 text-lg font-bold text-plansul-blue">{categoria.titulo}</h2>
-              )}
-              {categoria.intro && <p className="mb-4 text-sm text-slate-600">{categoria.intro}</p>}
+          {setor.categorias.map((categoria, categoriaIndex) =>
+            categoria.titulo ? (
+              <details
+                key={categoria.titulo}
+                className="group rounded-2xl border border-slate-200 open:bg-slate-50"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-6 text-lg font-bold text-plansul-blue marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal">
+                  {categoria.titulo}
+                  <ChevronDown
+                    size={20}
+                    className="shrink-0 text-plansul-teal transition-transform duration-200 group-open:rotate-180"
+                    aria-hidden="true"
+                  />
+                </summary>
 
-              <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200">
-                {categoria.itens.map((item) => (
-                  <details key={item.pergunta} className="group p-6 open:bg-slate-50">
-                    <summary className="cursor-pointer list-none text-base font-semibold text-slate-900 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal">
-                      {item.pergunta}
-                    </summary>
-                    <div className="mt-3 text-sm text-slate-600">{item.resposta}</div>
-                  </details>
-                ))}
+                <div className="space-y-4 border-t border-slate-200 p-6 pt-4">
+                  {categoria.intro && <p className="text-sm text-slate-600">{categoria.intro}</p>}
+
+                  <div className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white">
+                    {categoria.itens.map((item) => (
+                      <details key={item.pergunta} className="group/item p-6 open:bg-slate-50">
+                        <summary className="cursor-pointer list-none text-base font-semibold text-slate-900 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal">
+                          {item.pergunta}
+                        </summary>
+                        <div className="mt-3 text-sm text-slate-600">{item.resposta}</div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            ) : (
+              <div key={categoriaIndex}>
+                {categoria.intro && <p className="mb-4 text-sm text-slate-600">{categoria.intro}</p>}
+
+                <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200">
+                  {categoria.itens.map((item) => (
+                    <details key={item.pergunta} className="group p-6 open:bg-slate-50">
+                      <summary className="cursor-pointer list-none text-base font-semibold text-slate-900 marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-plansul-teal">
+                        {item.pergunta}
+                      </summary>
+                      <div className="mt-3 text-sm text-slate-600">{item.resposta}</div>
+                    </details>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
 
           {setor.rodape && (
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">

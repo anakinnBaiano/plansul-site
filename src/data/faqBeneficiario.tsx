@@ -388,7 +388,7 @@ const vendas: FaqCategoria[] = [
 
 const cobranca: FaqCategoria[] = [
   {
-    titulo: "1. Boletos e mensalidades",
+    titulo: "Boletos e mensalidades",
     itens: [
       {
         pergunta: "Como faço para emitir a 2ª via do meu boleto?",
@@ -478,7 +478,7 @@ const cobranca: FaqCategoria[] = [
     ],
   },
   {
-    titulo: "2. Pagamentos",
+    titulo: "Pagamentos",
     itens: [
       {
         pergunta: "Já paguei a mensalidade, mas ela continua aparecendo em aberto. O que faço?",
@@ -545,7 +545,7 @@ const cobranca: FaqCategoria[] = [
     ],
   },
   {
-    titulo: "3. Atrasos e inadimplência",
+    titulo: "Atrasos e inadimplência",
     itens: [
       {
         pergunta: "Estou com mensalidades atrasadas. Como consulto minha dívida?",
@@ -610,7 +610,7 @@ const cobranca: FaqCategoria[] = [
     ],
   },
   {
-    titulo: "4. Notificações e cancelamento por inadimplência",
+    titulo: "Notificações e cancelamento por inadimplência",
     itens: [
       {
         pergunta: "Recebi uma mensagem informando que estou inadimplente. O que significa?",
@@ -687,7 +687,7 @@ const cobranca: FaqCategoria[] = [
     ],
   },
   {
-    titulo: "5. Cadastro e comunicações",
+    titulo: "Cadastro e comunicações",
     intro: (
       <>
         As solicitações relacionadas à atualização e validação dos dados cadastrais são atendidas pela
@@ -755,7 +755,7 @@ const cobranca: FaqCategoria[] = [
     ],
   },
   {
-    titulo: "6. Contratos empresariais",
+    titulo: "Contratos empresariais",
     itens: [
       {
         pergunta: "Sou beneficiário de um plano empresarial. Posso negociar diretamente minha mensalidade?",
@@ -792,7 +792,7 @@ const cobranca: FaqCategoria[] = [
     ],
   },
   {
-    titulo: "7. Segurança",
+    titulo: "Segurança",
     itens: [
       {
         pergunta: "Como saber se uma cobrança do Plansul é verdadeira?",
