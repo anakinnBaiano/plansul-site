@@ -13,7 +13,7 @@ export default function NoticiasPage() {
       <Breadcrumb items={[{ label: "Avisos" }]} />
       <section className="mx-auto max-w-content px-4 pb-20 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-plansul-blue">
-          Notícias da <span className="text-plansul-blue">Plan</span>
+          Notícias : <span className="text-plansul-blue">Plan</span>
           <span className="text-plansul-teal">sul</span>
         </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
