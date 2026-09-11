@@ -22,7 +22,7 @@ export default function AppDownloadBanner() {
         className="motion-safe:animate-pulse-scale inline-flex h-16 w-16 shrink-0 items-center justify-center drop-shadow-lg"
       >
         <Image
-          src="/icons/app-qrcode-phone-black.png"
+          src="/icons/app-qrcode-phone-white.png"
           alt=""
           width={252}
           height={256}
