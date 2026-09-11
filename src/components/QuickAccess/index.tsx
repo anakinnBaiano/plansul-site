@@ -22,6 +22,7 @@ export default function QuickAccess() {
   return (
     <section
       aria-labelledby="como-ajudar-heading"
+      data-bg="dark"
       className="bg-gradient-to-br from-plansul-blue-dark via-plansul-blue to-plansul-teal"
     >
       <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
