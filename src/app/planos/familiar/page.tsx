@@ -31,7 +31,7 @@ export default function PlanoFamiliarPage() {
                   {plano.desativado && item.startsWith("Abrangência") && (
                     <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
                       <Ban size={14} aria-hidden="true" />
-                      Inativo
+                      Plano Inativo
                     </span>
                   )}
                 </li>
