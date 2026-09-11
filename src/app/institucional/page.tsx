@@ -62,14 +62,14 @@ export default function InstitucionalPage() {
                   key={membro.id}
                   className="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-plansul-blue hover:bg-gradient-to-br hover:from-plansul-blue hover:to-plansul-teal hover:shadow-lg"
                 >
-                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full bg-plansul-blue/10 transition-colors duration-300 group-hover:bg-white/20">
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full bg-plansul-blue/10 transition-colors duration-300 group-hover:bg-white/20">
                     {membro.fotoUrl && (
                       <Image
                         src={membro.fotoUrl}
                         alt={membro.nome}
                         fill
-                        sizes="64px"
-                        className="object-cover"
+                        sizes="80px"
+                        className="object-cover object-top"
                       />
                     )}
                   </div>
