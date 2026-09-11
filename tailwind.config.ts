@@ -45,10 +45,15 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        "pulse-scale": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.15)" },
+        },
       },
       animation: {
         blink: "blink 1.2s ease-in-out infinite",
         float: "float 6s ease-in-out infinite",
+        "pulse-scale": "pulse-scale 1.4s ease-in-out infinite",
       },
     },
   },

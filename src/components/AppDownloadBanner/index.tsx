@@ -19,10 +19,10 @@ export default function AppDownloadBanner() {
         href="/beneficiario/aplicativo"
         aria-label="Baixar aplicativo Plansul"
         title="Baixar aplicativo Plansul"
-        className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-white bg-plansul-blue p-2.5 shadow-lg transition-transform hover:scale-105 hover:bg-plansul-blue-light"
+        className="motion-safe:animate-pulse-scale inline-flex h-16 w-16 shrink-0 items-center justify-center drop-shadow-lg"
       >
         <Image
-          src="/icons/app-qrcode-phone-white.png"
+          src="/icons/app-qrcode-phone-black.png"
           alt=""
           width={252}
           height={256}
