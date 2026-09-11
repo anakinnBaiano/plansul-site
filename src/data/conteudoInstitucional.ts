@@ -16,10 +16,7 @@ export const conteudosTexto: ConteudoTexto[] = [
     slug: "historia",
     titulo: "Nossa História",
     corpo:
-      "Fundada em 15 de março de 1993, a Plansul nasceu como o plano de saúde próprio da Santa Casa de Itabuna, atuando na modalidade exclusivamente hospitalar e na condição de um setor da própria Santa Casa. Desde então, a empresa vem consolidando sua trajetória na saúde suplementar da região, ampliando a estrutura de atendimento e mantendo o compromisso com a qualidade e a proximidade com quem depende dos seus serviços todos os dias.",
-    // [PREENCHER] demais marcos da história oficial (expansão da rede,
-    // criação do Centro Médico Plansul, certificações, etc.) — adicionar
-    // aqui conforme forem confirmados pela empresa.
+      "O PLANSUL nasceu em 15 de março de 1993, conectado à Santa Casa de Misericórdia de Itabuna, com o propósito de oferecer saúde de qualidade, cuidado e dignidade à população. Hoje, celebramos 33 anos de história, aprendizado e evolução — mais do que um plano de saúde, somos uma instituição comprometida em cuidar de pessoas e fazer a diferença na vida de milhares de famílias.",
   },
 ];
 
