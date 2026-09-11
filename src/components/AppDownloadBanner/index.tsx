@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { Smartphone } from "lucide-react";
 
 export default function AppDownloadBanner() {
   return (
@@ -21,7 +21,7 @@ export default function AppDownloadBanner() {
         title="Baixar aplicativo Plansul"
         className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-plansul-blue text-white shadow-lg transition-transform hover:scale-105 hover:bg-plansul-blue-light"
       >
-        <Phone size={28} aria-hidden="true" />
+        <Smartphone size={28} aria-hidden="true" />
       </Link>
     </div>
   );
