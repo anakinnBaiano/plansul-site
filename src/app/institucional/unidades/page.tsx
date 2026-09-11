@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import { unidades as unidadesData } from "@/data/unidades";
 
@@ -48,6 +48,14 @@ export default function UnidadesPage() {
                 />
                 {unidade.telefone}
               </a>
+              <p className="mt-2 flex items-start gap-2 text-sm text-slate-600 transition-colors duration-300 group-hover:text-white/85">
+                <Clock
+                  size={18}
+                  className="mt-0.5 shrink-0 text-plansul-teal transition-colors duration-300 group-hover:text-white"
+                  aria-hidden="true"
+                />
+                {unidade.horario}
+              </p>
             </article>
           ))}
         </div>

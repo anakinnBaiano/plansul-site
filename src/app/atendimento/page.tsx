@@ -32,12 +32,10 @@ export default function AtendimentoPage() {
           </p>
           {unidades.map((unidade) => (
             <p key={unidade.id} className="mt-1">
-              <strong>Endereço ({unidade.cidade} – {unidade.estado}):</strong> {unidade.endereco}
+              <strong>{unidade.cidade} – {unidade.estado}:</strong> {unidade.endereco} — Horário:{" "}
+              {unidade.horario}
             </p>
           ))}
-          <p className="mt-1">
-            <strong>Horário:</strong> {CONTACT.hours}
-          </p>
           <p className="mt-1 text-plansul-teal-dark">
             <strong>Urgência:</strong> {CONTACT.emergencyNote}
           </p>

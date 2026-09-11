@@ -1,9 +1,9 @@
 /**
  * Dados dos planos.
  *
- * ATENÇÃO: nenhum preço ou cobertura foi inventado aqui. Por enquanto só a
- * abrangência foi confirmada (Itabuna e Ilhéus); demais características/
- * condições entram aqui assim que a área comercial fornecer.
+ * ATENÇÃO: nenhum preço foi inventado aqui. Características e condições
+ * (coparticipação, fidelidade, abrangência) são as oficiais informadas pela
+ * área comercial da Plansul.
  */
 
 export type Plano = {
@@ -22,14 +22,25 @@ export const planos: Plano[] = [
     categoria: "empresarial",
     nome: "Plano Empresarial",
     publico: "Empresas de todos os portes que desejam oferecer saúde aos colaboradores.",
-    caracteristicas: ["Abrangência: Itabuna e Ilhéus"],
+    caracteristicas: [
+      "Categoria Exclusive: coparticipação de 30% sobre o valor dos procedimentos realizados, além da mensalidade",
+      "Coparticipação total limitada ao valor de uma mensalidade",
+      "Período de fidelidade: 12 meses",
+      "Abrangência: Itabuna ou Ilhéus, conforme o plano contratado",
+    ],
   },
   {
     slug: "familiar",
     categoria: "familiar",
     nome: "Plano Individual / Familiar",
     publico: "Pessoas físicas e famílias que buscam um plano de saúde particular.",
-    caracteristicas: ["Abrangência: Itabuna e Ilhéus"],
+    caracteristicas: [
+      "Categoria Exclusive: coparticipação de 30% sobre o valor dos procedimentos, limitada ao valor de uma mensalidade",
+      "Categoria Gold: coparticipação de 50% após o beneficiário exceder o uso do pacote contratado",
+      "Período de fidelidade: 12 meses",
+      "Abrangência: Itabuna ou Ilhéus, conforme o plano contratado",
+      "Situação atual: planos temporariamente inativos para novas contratações",
+    ],
     desativado: true,
   },
 ];
