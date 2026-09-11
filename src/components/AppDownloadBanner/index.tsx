@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Smartphone } from "lucide-react";
+import Image from "next/image";
 
 export default function AppDownloadBanner() {
   return (
@@ -19,9 +19,15 @@ export default function AppDownloadBanner() {
         href="/beneficiario/aplicativo"
         aria-label="Baixar aplicativo Plansul"
         title="Baixar aplicativo Plansul"
-        className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-plansul-blue text-white shadow-lg transition-transform hover:scale-105 hover:bg-plansul-blue-light"
+        className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white p-2.5 shadow-lg transition-transform hover:scale-105"
       >
-        <Smartphone size={28} aria-hidden="true" />
+        <Image
+          src="/icons/app-qrcode-phone.png"
+          alt=""
+          width={252}
+          height={256}
+          className="h-full w-full object-contain"
+        />
       </Link>
     </div>
   );
