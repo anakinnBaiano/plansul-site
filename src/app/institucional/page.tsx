@@ -21,10 +21,10 @@ const cards = [
 
 // Comentários curtos e temáticos para a seção de liderança desta página —
 // resumem, com foco em técnica/qualidade e em gestão/organização, o que
-// Dr. Eric e o Sr. Celso já disseram na íntegra em /institucional/equipe.
+// o Dr. Vinicius e o Sr. Celso já disseram na íntegra em /institucional/equipe.
 // Identificados pelo id usado em src/data/equipe.ts.
 const DESTAQUES_LIDERANCA: Record<string, string> = {
-  "diretor-medico-eric-ettinger":
+  "diretor-medico-vinicius-de-brito-rodrigues":
     "Compromisso técnico com a qualidade assistencial: inovação e verticalização do atendimento para garantir saúde suplementar de excelência em cada consulta do Centro Médico Plansul.",
   "gestor-celso-roberto-dos-santos":
     "Gestão orientada à organização do plano: capacitação contínua das equipes e acompanhamento constante da satisfação de quem confia na Plansul.",

@@ -15,12 +15,12 @@ export type MembroEquipe = {
 
 export const equipe: MembroEquipe[] = [
   {
-    id: "diretor-medico-eric-ettinger",
-    nome: "Dr. Eric Ettinger Júnior",
+    id: "diretor-medico-vinicius-de-brito-rodrigues",
+    nome: "Dr. Vinicius de Brito Rodrigues",
     cargo: "Diretor Médico",
     depoimento:
-      "Com números em situação crescente, a atual gestão do Plansul é marcada principalmente pela inovação, garantindo saúde suplementar de qualidade em todos os serviços prestados. A verticalização do atendimento é uma realidade muito satisfatória para nós, e o Centro Médico Plansul segue atendendo, diariamente, a todos os seus conveniados com muita ética e respeito.",
-    fotoUrl: "/equipe/eric-ettinger-junior.jpg",
+      "Médico e gestor em saúde, acredita que cuidar de pessoas vai muito além da assistência médica. Com experiência em gestão, estratégia e governança, busca contribuir para organizações de saúde mais eficientes, humanas e sustentáveis, onde boas decisões se transformem em melhores experiências para pacientes, profissionais e toda a sociedade.",
+    fotoUrl: "/equipe/vinicius-de-brito-rodrigues.jpg",
     ordem: 0,
   },
   {
@@ -28,7 +28,7 @@ export const equipe: MembroEquipe[] = [
     nome: "Celso Roberto dos Santos",
     cargo: "Gestor",
     depoimento:
-      "Uma das grandes preocupações da atual gestão do Plansul é atender com qualidade, seja na venda do plano ou no atendimento direto ao paciente. Para isso, capacitamos todos os envolvidos regularmente focando em um único resultado: a excelência na satisfação. Pesquisas de satisfação são implementadas, e avaliações gerenciais nos permite acompanhar, passo a passo, a realidade do cliente Plansul.",
+      "Gestão orientada à organização, ao fortalecimento e à melhoria contínua do plano, com investimentos na capacitação das equipes, no aprimoramento dos processos e na qualidade dos serviços prestados. Mantemos um acompanhamento próximo e constante da satisfação dos beneficiários, buscando compreender suas necessidades e oferecer uma experiência cada vez mais eficiente, acolhedora e humanizada a todos que confiam no PLANSUL.",
     fotoUrl: "/equipe/celso-roberto-dos-santos.jpg",
     ordem: 1,
   },

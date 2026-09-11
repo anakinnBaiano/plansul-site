@@ -41,7 +41,7 @@ export default function EquipePage() {
                     alt={membro.nome}
                     fill
                     sizes="112px"
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 ) : (
                   <span className="flex h-full w-full items-center justify-center text-2xl font-bold text-plansul-blue transition-colors duration-300 group-hover:text-white">
@@ -53,8 +53,12 @@ export default function EquipePage() {
               <h2 className="mt-5 text-lg font-semibold text-slate-900 transition-colors duration-300 group-hover:text-white">{membro.nome}</h2>
               <p className="text-xs font-normal uppercase tracking-wider text-plansul-teal transition-colors duration-300 group-hover:text-white">{membro.cargo}</p>
 
-              <Quote className="mt-4 text-plansul-blue/20 transition-colors duration-300 group-hover:text-white/30" size={28} aria-hidden="true" />
-              <p className="mt-2 text-sm font-normal leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">{membro.depoimento}</p>
+              {membro.depoimento && (
+                <>
+                  <Quote className="mt-4 text-plansul-blue/20 transition-colors duration-300 group-hover:text-white/30" size={28} aria-hidden="true" />
+                  <p className="mt-2 text-sm font-normal leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">{membro.depoimento}</p>
+                </>
+              )}
             </article>
           ))}
         </div>
