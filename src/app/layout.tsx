@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AppDownloadBanner from "@/components/AppDownloadBanner";
 import { SITE, CONTACT, EXTERNAL_LINKS } from "@/lib/constants";
 
 // Substitui a "Inter" (declarada em globals.css mas nunca carregada de fato —
@@ -90,6 +91,7 @@ export default function RootLayout({
         >
           Pular para o conteúdo principal
         </a>
+        <AppDownloadBanner />
         <Header />
         <main id="conteudo-principal" className="flex-1">
           {children}
