@@ -12,6 +12,7 @@ export type Unidade = {
   endereco: string;
   telefone: string;
   horario: string;
+  fotoUrl: string | null;
   ordem: number;
 };
 
@@ -24,6 +25,7 @@ export const unidades: Unidade[] = [
     endereco: "R. Santa Cruz, S/N – Nossa Sra. de Fátima, Itabuna – BA, CEP 45603-305",
     telefone: "(73) 3214-3800",
     horario: "Segunda a sexta-feira, das 7h às 18h",
+    fotoUrl: null,
     ordem: 0,
   },
   {
@@ -34,6 +36,7 @@ export const unidades: Unidade[] = [
     endereco: "Galeria Encantur, sala 7 – Rua Jorge Amado, 102, Centro, Ilhéus – BA, CEP 45653-200",
     telefone: "(73) 3223-9623",
     horario: "Segunda a sexta-feira, das 8h às 17h30",
+    fotoUrl: "/unidades/ilheus-galeria-encantur.jpg",
     ordem: 1,
   },
 ];

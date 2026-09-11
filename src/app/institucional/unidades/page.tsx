@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import { unidades as unidadesData } from "@/data/unidades";
@@ -24,8 +25,19 @@ export default function UnidadesPage() {
           {unidades.map((unidade) => (
             <article
               key={unidade.id}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-plansul-blue hover:bg-gradient-to-br hover:from-plansul-blue hover:to-plansul-teal hover:shadow-lg"
+              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-plansul-blue hover:bg-gradient-to-br hover:from-plansul-blue hover:to-plansul-teal hover:shadow-lg"
             >
+              {unidade.fotoUrl && (
+                <div className="relative -mx-6 -mt-6 mb-4 h-40 w-[calc(100%+3rem)]">
+                  <Image
+                    src={unidade.fotoUrl}
+                    alt={`Fachada da unidade Plansul em ${unidade.cidade}`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <h2 className="text-lg font-bold text-plansul-blue transition-colors duration-300 group-hover:text-white">
                 {unidade.cidade} – {unidade.estado}
               </h2>
