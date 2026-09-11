@@ -91,7 +91,6 @@ export default function RootLayout({
         >
           Pular para o conteúdo principal
         </a>
-        <AppDownloadBanner />
         <Header />
         <main id="conteudo-principal" className="flex-1">
           {children}
@@ -108,6 +107,7 @@ export default function RootLayout({
         </section>
         <Footer />
         <WhatsAppButton />
+        <AppDownloadBanner />
       </body>
     </html>
   );
