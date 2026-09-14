@@ -16,16 +16,16 @@ const config: Config = {
     extend: {
       colors: {
         plansul: {
-          // Extraído diretamente de public/logo-plansul.png (azul #0a3e61, verde-água #06958e).
+          // Paleta oficial da marca (Pantone 301C / 3272C).
           blue: {
-            DEFAULT: "#0a3e61",
-            dark: "#06263c",
-            light: "#116aa6",
+            DEFAULT: "#004264",
+            dark: "#00273b",
+            light: "#0074b0",
           },
           teal: {
-            DEFAULT: "#06958e",
-            dark: "#046e69",
-            light: "#3fc2b8",
+            DEFAULT: "#178d84",
+            dark: "#116a63",
+            light: "#2dddcf",
           },
         },
       },

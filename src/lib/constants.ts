@@ -11,7 +11,7 @@ export const SITE = {
   legalName: "[PREENCHER: Razão social oficial da Plansul]",
   tagline: "Cuidar de você é o nosso plano.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.plansul.net",
-  themeColor: "#0a3e61",
+  themeColor: "#004264",
   ansRegistro: "42000-0",
 };
 

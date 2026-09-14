@@ -53,8 +53,8 @@ export default function Hero({
       >
         <defs>
           <linearGradient id="hero-wave-gradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#0a3e61" />
-            <stop offset="100%" stopColor="#06958e" />
+            <stop offset="0%" stopColor="#004264" />
+            <stop offset="100%" stopColor="#178d84" />
           </linearGradient>
         </defs>
         <path
