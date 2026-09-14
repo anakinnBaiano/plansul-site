@@ -25,7 +25,7 @@ export const unidades: Unidade[] = [
     endereco: "R. Santa Cruz, S/N – Nossa Sra. de Fátima, Itabuna – BA, CEP 45603-305",
     telefone: "(73) 3214-3800",
     horario: "Segunda a sexta-feira, das 7h às 18h",
-    fotoUrl: null,
+    fotoUrl: "/unidades/itabuna-centro-medico.jpg",
     ordem: 0,
   },
   {

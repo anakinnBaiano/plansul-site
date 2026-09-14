@@ -18,7 +18,7 @@ export default function HomePage() {
         primaryCta={{ label: "Sou beneficiário", href: "/beneficiario" }}
         secondaryCta={{ label: "Quero contratar um plano", href: "/planos" }}
         newsCta={{ label: "Avisos", href: "/noticias" }}
-        images={["/hero-familia.jpg", "/hero1.jpeg", "/hero3.jpeg"]}
+        images={["/hero-familia.png", "/hero1.jpeg", "/hero2.png"]}
         imageAlt="Família caminhando e sorrindo em um parque arborizado"
       />
 
