@@ -20,7 +20,7 @@ type HeroProps = {
 };
 
 // Troca de imagem do card do Hero (quando houver mais de uma foto em `images`).
-const SLIDE_INTERVAL_MS = 6000;
+const SLIDE_INTERVAL_MS = 5000;
 
 export default function Hero({
   eyebrow,
