@@ -21,7 +21,7 @@ export default function HomePage() {
         images={[
           "/hero-familia.png",
           { src: "/hero1.jpeg", position: "center 42%" },
-          "/hero2.png",
+          { src: "/hero2.png", position: "center 38%" },
           { src: "/hero/atualize-cadastro.jpg", fit: "contain" },
           { src: "/hero/planos-cnpj.jpg", fit: "contain" },
           { src: "/hero/guia-medico-app.jpg", fit: "contain" },
