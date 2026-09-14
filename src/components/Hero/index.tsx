@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Newspaper } from "lucide-react";
 import type { ReactNode } from "react";
 
+type HeroImage = string | { src: string; position?: string; fit?: "cover" | "contain" };
+
 type HeroProps = {
   eyebrow?: ReactNode;
   title: ReactNode;
@@ -13,7 +15,7 @@ type HeroProps = {
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   newsCta?: { label: string; href: string };
-  images?: string[];
+  images?: HeroImage[];
   imageAlt?: string;
 };
 
@@ -116,18 +118,24 @@ export default function Hero({
                   transform: `translateX(-${current * (100 / images.length)}%)`,
                 }}
               >
-                {images.map((src, i) => (
-                  <div key={src} className="relative h-full shrink-0" style={{ width: `${100 / images.length}%` }}>
-                    <Image
-                      src={src}
-                      alt={imageAlt ?? ""}
-                      fill
-                      sizes="(min-width: 1024px) 60vw, 100vw"
-                      className="object-cover object-top"
-                      priority={i === 0}
-                    />
-                  </div>
-                ))}
+                {images.map((img, i) => {
+                  const src = typeof img === "string" ? img : img.src;
+                  const position = typeof img === "string" ? "center 20%" : img.position ?? "center 20%";
+                  const fit = typeof img === "string" ? "cover" : img.fit ?? "cover";
+                  return (
+                    <div key={src} className="relative h-full shrink-0" style={{ width: `${100 / images.length}%` }}>
+                      <Image
+                        src={src}
+                        alt={imageAlt ?? ""}
+                        fill
+                        sizes="(min-width: 1024px) 60vw, 100vw"
+                        className={fit === "contain" ? "object-contain" : "object-cover"}
+                        style={{ objectPosition: fit === "contain" ? "center" : position }}
+                        priority={i === 0}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             ) : (
               <div
@@ -142,9 +150,9 @@ export default function Hero({
 
           {images.length > 1 && (
             <div className="mt-4 flex justify-center gap-2" role="tablist" aria-label="Fotos em destaque">
-              {images.map((src, i) => (
+              {images.map((img, i) => (
                 <button
-                  key={src}
+                  key={typeof img === "string" ? img : img.src}
                   type="button"
                   role="tab"
                   aria-selected={i === current}

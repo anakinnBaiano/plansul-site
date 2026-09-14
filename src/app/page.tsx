@@ -18,7 +18,14 @@ export default function HomePage() {
         primaryCta={{ label: "Sou beneficiário", href: "/beneficiario" }}
         secondaryCta={{ label: "Quero contratar um plano", href: "/planos" }}
         newsCta={{ label: "Avisos", href: "/noticias" }}
-        images={["/hero-familia.png", "/hero1.jpeg", "/hero2.png"]}
+        images={[
+          "/hero-familia.png",
+          { src: "/hero1.jpeg", position: "center 42%" },
+          "/hero2.png",
+          { src: "/hero/atualize-cadastro.jpg", fit: "contain" },
+          { src: "/hero/planos-cnpj.jpg", fit: "contain" },
+          { src: "/hero/guia-medico-app.jpg", fit: "contain" },
+        ]}
         imageAlt="Família caminhando e sorrindo em um parque arborizado"
       />
 
