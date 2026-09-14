@@ -107,7 +107,7 @@ export default function Hero({
         </div>
 
         <div className="lg:col-span-3 motion-safe:animate-float">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-slate-100 shadow-xl">
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-slate-100 shadow-xl">
             {images.length > 0 ? (
               <div
                 className="flex h-full transition-transform duration-700 ease-in-out"
@@ -123,7 +123,7 @@ export default function Hero({
                       alt={imageAlt ?? ""}
                       fill
                       sizes="(min-width: 1024px) 60vw, 100vw"
-                      className="object-cover"
+                      className="object-cover object-top"
                       priority={i === 0}
                     />
                   </div>
