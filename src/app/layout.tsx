@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, Lexend } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,20 +7,16 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import AppDownloadBanner from "@/components/AppDownloadBanner";
 import { SITE, CONTACT, EXTERNAL_LINKS } from "@/lib/constants";
 
-// Substitui a "Inter" (declarada em globals.css mas nunca carregada de fato —
-// o site rodava na fonte padrão do sistema). Dupla de fontes: Archivo nos
-// títulos (traço mais sério/corporativo, sem perder presença em tamanhos
-// grandes) e Lexend no restante do texto — desenhada com foco em
-// legibilidade (peso mais forte que uma fonte fina, sem ficar "grossa" ou
-// infantil), boa para um público que mistura beneficiários idosos e jovens.
-const archivo = Archivo({
+// Fonte única do site (Montserrat), carregada duas vezes com pesos
+// diferentes pra alimentar as variáveis de título e de texto corrido.
+const montserratHeading = Montserrat({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const lexend = Lexend({
+const montserratSans = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
@@ -78,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${archivo.variable} ${lexend.variable}`}>
+    <html lang="pt-BR" className={`${montserratHeading.variable} ${montserratSans.variable}`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <script
           type="application/ld+json"
