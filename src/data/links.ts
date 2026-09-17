@@ -23,6 +23,26 @@ export type QuickAccessLink = {
 
 export const quickAccessLinks: QuickAccessLink[] = [
   {
+    titulo: "Sou beneficiário",
+    descricao: "Acessar meus serviços",
+    href: "/beneficiario",
+    icon: "user",
+  },
+  {
+    titulo: "Sou empresa",
+    descricao: "Acessar portal da empresa",
+    href: EXTERNAL_LINKS.portalEmpresa,
+    icon: "building",
+    external: true,
+  },
+  {
+    titulo: "Sou prestador",
+    descricao: "Acessar portal do prestador",
+    href: EXTERNAL_LINKS.portalPrestador,
+    icon: "stethoscope",
+    external: true,
+  },
+  {
     titulo: "Quero encontrar um médico",
     descricao: "Acessar Guia Médico",
     href: EXTERNAL_LINKS.guiaMedico,
