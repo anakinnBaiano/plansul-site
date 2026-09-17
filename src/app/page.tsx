@@ -22,9 +22,9 @@ export default function HomePage() {
           "/hero-familia.png",
           { src: "/hero1.jpeg", position: "center 42%" },
           { src: "/hero2.png", position: "center 38%" },
-          { src: "/hero/atualize-cadastro.jpg", fit: "contain" },
-          { src: "/hero/planos-cnpj.jpg", fit: "contain" },
-          { src: "/hero/guia-medico-app.jpg", fit: "contain" },
+          { src: "/hero/planos-empresarial-equipe.jpg", position: "center 35%" },
+          { src: "/hero/planos-empresarial-aperto-mao.jpg", position: "center 35%" },
+          { src: "/hero/planos-familiar.jpg", position: "center 35%" },
         ]}
         imageAlt="Família caminhando e sorrindo em um parque arborizado"
       />
