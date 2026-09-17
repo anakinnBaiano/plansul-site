@@ -19,17 +19,6 @@ const cards = [
   { titulo: "Nossas Unidades", descricao: "Endereços e telefones de atendimento.", href: "/institucional/unidades", icon: MapPin },
 ];
 
-// Comentários curtos e temáticos para a seção de liderança desta página —
-// resumem, com foco em técnica/qualidade e em gestão/organização, o que
-// o Dr. Vinicius e o Sr. Celso já disseram na íntegra em /institucional/equipe.
-// Identificados pelo id usado em src/data/equipe.ts.
-const DESTAQUES_LIDERANCA: Record<string, string> = {
-  "diretor-medico-vinicius-de-brito-rodrigues":
-    "Compromisso técnico com a qualidade assistencial: inovação e verticalização do atendimento para garantir saúde suplementar de excelência em cada consulta do Centro Médico Plansul.",
-  "gestor-celso-roberto-dos-santos":
-    "Gestão orientada à organização do plano: capacitação contínua das equipes e acompanhamento constante da satisfação de quem confia na Plansul.",
-};
-
 export default function InstitucionalPage() {
   const historia = getConteudoTexto("historia");
   const equipe = [...equipeData].sort((a, b) => a.ordem - b.ordem);
@@ -76,20 +65,13 @@ export default function InstitucionalPage() {
                   <div>
                     <p className="font-semibold text-slate-900 transition-colors duration-300 group-hover:text-white">{membro.nome}</p>
                     <p className="text-xs font-normal uppercase tracking-wider text-plansul-teal transition-colors duration-300 group-hover:text-white">{membro.cargo}</p>
-                    <p className="mt-2 text-sm font-normal text-slate-600 transition-colors duration-300 group-hover:text-white/85">
-                      {DESTAQUES_LIDERANCA[membro.id] ?? membro.depoimento}
+                    <p className="mt-2 text-sm font-normal leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/85">
+                      {membro.depoimento}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-            <Link
-              href="/institucional/equipe"
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-plansul-teal hover:underline"
-            >
-              Ver depoimento completo da equipe
-              <ArrowRight size={14} aria-hidden="true" />
-            </Link>
           </div>
         )}
 
