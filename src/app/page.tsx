@@ -19,10 +19,10 @@ export default function HomePage() {
         secondaryCta={{ label: "Quero contratar um plano", href: "/planos" }}
         newsCta={{ label: "Avisos", href: "/noticias" }}
         images={[
-          { src: "/hero/planos-empresarial-equipe.jpg", position: "center 35%" },
-          { src: "/hero/planos-empresarial-aperto-mao.jpg", position: "center 35%" },
-          { src: "/hero/planos-familiar.jpg", position: "center 35%" },
-          { src: "/hero/planos-familiar-2.jpg", position: "center 30%" },
+          { src: "/hero/planos-empresarial-equipe.jpg", position: "center 8%" },
+          { src: "/hero/planos-empresarial-aperto-mao.jpg", position: "center 8%" },
+          { src: "/hero/planos-familiar.jpg", position: "center 8%" },
+          { src: "/hero/planos-familiar-2.jpg", position: "center 8%" },
         ]}
         imageAlt="Família caminhando e sorrindo em um parque arborizado"
       />
