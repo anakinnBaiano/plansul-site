@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AppDownloadBanner from "@/components/AppDownloadBanner";
+import BrandBackground from "@/components/BrandBackground";
 import { SITE, CONTACT, EXTERNAL_LINKS } from "@/lib/constants";
 
 // Fonte única do site (Montserrat), carregada duas vezes com pesos
@@ -75,7 +76,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${montserratHeading.variable} ${montserratSans.variable}`}>
-      <body className="flex min-h-screen flex-col font-sans antialiased">
+      <body className="flex min-h-screen flex-col bg-slate-50 font-sans antialiased">
+        <BrandBackground />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

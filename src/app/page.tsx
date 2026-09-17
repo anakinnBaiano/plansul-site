@@ -31,7 +31,7 @@ export default function HomePage() {
 
       <QuickAccess />
 
-      <section id="planos-heading" aria-labelledby="planos-heading-title" className="scroll-mt-24 bg-white">
+      <section id="planos-heading" aria-labelledby="planos-heading-title" className="scroll-mt-24">
         <div className="mx-auto max-w-content px-4 py-16 sm:px-6 lg:px-8">
           <h2 id="planos-heading-title" className="text-2xl font-bold text-plansul-blue sm:text-3xl">
             Encontre o plano ideal para sua necessidade.

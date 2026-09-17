@@ -44,7 +44,7 @@ export default function Hero({
   }, [images.length]);
 
   return (
-    <section className="relative bg-gradient-to-b from-slate-50 to-white">
+    <section className="relative">
       <svg
         aria-hidden="true"
         viewBox="0 0 1440 40"
