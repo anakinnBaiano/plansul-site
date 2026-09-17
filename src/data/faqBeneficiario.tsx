@@ -171,22 +171,91 @@ const centroMedico: FaqCategoria[] = [
 // contato já confirmados, a substituir pelo conteúdo definitivo do setor.
 const autorizacao: FaqCategoria[] = [
   {
+    titulo: "Autorização de Exames",
     itens: [
       {
-        pergunta: "Como solicito autorização para um procedimento ou exame?",
+        pergunta: "Como solicitar autorização de exames?",
+        resposta: (
+          <ul className="list-disc space-y-1 pl-5">
+            <li>Presencialmente na sede do Plansul; ou</li>
+            <li>
+              Por e-mail: <EmailAutorizacao />
+            </li>
+            <li>Exceção: para exames de ressonância, o procedimento é diferente.</li>
+          </ul>
+        ),
+      },
+    ],
+  },
+  {
+    titulo: "Autorizações de Cirurgias",
+    itens: [
+      {
+        pergunta: "Como solicitar autorização de cirurgias?",
+        resposta: (
+          <ul className="list-disc space-y-1 pl-5">
+            <li>Itabuna: diretamente no prestador.</li>
+            <li>Vitória da Conquista: diretamente no prestador.</li>
+            <li>Ilhéus: presencialmente na sede do Plansul.</li>
+            <li>Cirurgias oftalmológicas em Itabuna: presencialmente na sede do Plansul.</li>
+          </ul>
+        ),
+      },
+    ],
+  },
+  {
+    titulo: "Prazo para Autorização",
+    itens: [
+      {
+        pergunta: "Qual é o prazo para uma autorização?",
+        resposta:
+          "O Plansul segue os prazos estabelecidos pela ANS (Agência Nacional de Saúde Suplementar).",
+      },
+    ],
+  },
+  {
+    titulo: "Documentos Necessários",
+    itens: [
+      {
+        pergunta: "Quais documentos são necessários para solicitar uma autorização por e-mail?",
+        resposta: (
+          <ul className="list-disc space-y-1 pl-5">
+            <li>Pedido médico;</li>
+            <li>Documento pessoal com foto.</li>
+          </ul>
+        ),
+      },
+    ],
+  },
+  {
+    titulo: "Troca de Clínica e Revalidação",
+    itens: [
+      {
+        pergunta: "Como solicitar troca de clínica ou revalidação?",
         resposta: (
           <>
-            Entre em contato pelo e-mail <EmailAutorizacao /> ou pelo telefone <TelefoneCentral /> para
-            dar entrada na sua solicitação de autorização.
+            <p>A solicitação pode ser realizada:</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              <li>
+                Por e-mail: <EmailAutorizacao />; ou
+              </li>
+              <li>Presencialmente na sede do Plansul.</li>
+            </ul>
           </>
         ),
       },
+    ],
+  },
+  {
+    titulo: "Horário de Funcionamento",
+    itens: [
       {
-        pergunta: "Como acompanho o andamento da minha autorização?",
+        pergunta: "Qual é o horário de atendimento?",
         resposta: (
-          <>
-            Envie sua dúvida para <EmailAutorizacao /> informando os dados do procedimento solicitado.
-          </>
+          <ul className="list-disc space-y-1 pl-5">
+            <li>Segunda a sexta-feira;</li>
+            <li>Das 7h às 18h.</li>
+          </ul>
         ),
       },
     ],
