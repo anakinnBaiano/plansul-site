@@ -19,9 +19,6 @@ export default function HomePage() {
         secondaryCta={{ label: "Quero contratar um plano", href: "/planos" }}
         newsCta={{ label: "Avisos", href: "/noticias" }}
         images={[
-          "/hero-familia.png",
-          { src: "/hero1.jpeg", position: "center 42%" },
-          { src: "/hero2.png", position: "center 38%" },
           { src: "/hero/planos-empresarial-equipe.jpg", position: "center 35%" },
           { src: "/hero/planos-empresarial-aperto-mao.jpg", position: "center 35%" },
           { src: "/hero/planos-familiar.jpg", position: "center 35%" },
