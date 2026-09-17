@@ -54,9 +54,12 @@ export default function ServiceCard({
       : "hover:border-plansul-blue focus-visible:border-plansul-blue"
   );
 
+  // Card sempre com fundo branco, mesmo quando usado em seções escuras
+  // (ex.: "Como podemos ajudar?") — marca explicitamente pro ícone
+  // flutuante do app não virar branco sobre um card branco.
   if (isDirectScheme) {
     return (
-      <a href={href} className={className} aria-label={`${titulo}: ${descricao}`}>
+      <a href={href} className={className} data-bg="light" aria-label={`${titulo}: ${descricao}`}>
         {content}
       </a>
     );
@@ -69,6 +72,7 @@ export default function ServiceCard({
         target="_blank"
         rel="noopener noreferrer"
         className={className}
+        data-bg="light"
         aria-label={`${titulo}: ${descricao} (abre em nova aba)`}
       >
         {content}
@@ -77,7 +81,7 @@ export default function ServiceCard({
   }
 
   return (
-    <Link href={href} className={className} aria-label={`${titulo}: ${descricao}`}>
+    <Link href={href} className={className} data-bg="light" aria-label={`${titulo}: ${descricao}`}>
       {content}
     </Link>
   );

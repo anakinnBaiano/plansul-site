@@ -95,6 +95,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2 transition-opacity hover:opacity-90"
+            data-bg="light"
           >
             <span className="rounded border-2 border-black bg-black px-2 py-1 text-xs font-bold leading-none text-white sm:text-sm">
               ANS nº {SITE.ansRegistro}

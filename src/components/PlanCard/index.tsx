@@ -68,6 +68,7 @@ export default function PlanCard({ plano }: PlanCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-plansul-blue px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-plansul-blue-light"
+            data-bg="dark"
           >
             Falar com atendimento
           </a>

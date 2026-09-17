@@ -5,67 +5,52 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Posição fixa do ícone (ver classes "bottom-6 right-6" + "h-16 w-16" no
-// JSX abaixo) usada pra calcular a região observada. Não medimos o
-// elemento em si via getBoundingClientRect porque ele tem uma animação de
-// pulso (scale) rodando o tempo todo, o que faria o retângulo medido
-// oscilar e desalinhar a detecção.
+// JSX abaixo) usada pra calcular o ponto observado.
 const ICONE_OFFSET_PX = 24; // bottom-6 / right-6 (1.5rem)
 const ICONE_TAMANHO_PX = 64; // h-16 / w-16 (4rem)
 
-// Troca a cor do ícone conforme o que está atrás dele: branco sobre fundo
-// escuro (rodapé, seção "Como podemos ajudar?"), azul sobre fundo claro —
-// essas seções são marcadas com o atributo data-bg="dark".
-//
-// Usa IntersectionObserver (em vez de recalcular getBoundingClientRect a
-// cada evento de scroll) porque é a API do navegador feita pra essa
-// pergunta ("isso está visível numa região da tela?") e continua correta
-// em telas pequenas, onde a barra de endereço do navegador some/aparece
-// durante o scroll e muda a altura da viewport no meio do caminho.
+// Troca a cor do ícone conforme o que está exatamente atrás dele: branco
+// sobre fundo escuro, azul sobre fundo claro. Em vez de perguntar "a seção
+// inteira é clara ou escura?" (o que erra sempre que um elemento local tem
+// a cor oposta da seção — um card branco dentro do bloco "Como podemos
+// ajudar?", o botão azul "Falar com atendimento" dentro de uma seção
+// clara), usamos elementsFromPoint no ponto exato do ícone e subimos até o
+// elemento marcado mais próximo (data-bg="dark"/"light") — o elemento local
+// sempre vence sobre a seção que o contém.
 function useIconeSobreFundoEscuro() {
   const [fundoEscuro, setFundoEscuro] = useState(false);
 
   useEffect(() => {
-    let observer: IntersectionObserver | null = null;
-    const visiveis = new Map<Element, boolean>();
+    // Throttle por tempo (não por requestAnimationFrame): rAF fica pausado
+    // em abas em segundo plano, o que travaria a cor do ícone na última
+    // detecção feita antes de a aba perder o foco.
+    let ultimaExecucao = 0;
+    const INTERVALO_MIN_MS = 32;
 
-    const atualizarEstado = () => {
-      setFundoEscuro([...visiveis.values()].some(Boolean));
+    const detectar = () => {
+      ultimaExecucao = Date.now();
+      const fab = document.querySelector(".app-fab");
+      if (!fab) return;
+
+      const x = window.innerWidth - ICONE_OFFSET_PX - ICONE_TAMANHO_PX / 2;
+      const y = window.innerHeight - ICONE_OFFSET_PX - ICONE_TAMANHO_PX / 2;
+      const alvo = document.elementsFromPoint(x, y).find((el) => !fab.contains(el));
+      const marcado = alvo?.closest("[data-bg]");
+
+      setFundoEscuro(marcado?.getAttribute("data-bg") === "dark");
     };
 
-    const recriarObserver = () => {
-      observer?.disconnect();
-      visiveis.clear();
-
-      const top = window.innerHeight - ICONE_OFFSET_PX - ICONE_TAMANHO_PX;
-      const right = ICONE_OFFSET_PX;
-      const bottom = ICONE_OFFSET_PX;
-      const left = window.innerWidth - ICONE_OFFSET_PX - ICONE_TAMANHO_PX;
-
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            visiveis.set(entry.target, entry.isIntersecting);
-          });
-          atualizarEstado();
-        },
-        {
-          root: null,
-          rootMargin: `${-top}px ${-right}px ${-bottom}px ${-left}px`,
-          threshold: 0,
-        }
-      );
-
-      document.querySelectorAll<HTMLElement>('[data-bg="dark"]').forEach((secao) => {
-        visiveis.set(secao, false);
-        observer!.observe(secao);
-      });
+    const agendar = () => {
+      if (Date.now() - ultimaExecucao < INTERVALO_MIN_MS) return;
+      detectar();
     };
 
-    recriarObserver();
-    window.addEventListener("resize", recriarObserver);
+    detectar();
+    window.addEventListener("scroll", agendar, { passive: true });
+    window.addEventListener("resize", agendar);
     return () => {
-      observer?.disconnect();
-      window.removeEventListener("resize", recriarObserver);
+      window.removeEventListener("scroll", agendar);
+      window.removeEventListener("resize", agendar);
     };
   }, []);
 
