@@ -85,10 +85,10 @@ export const NAV_LINKS = [
   { label: "Prestadores", href: "/prestadores" },
   { label: "Guia Médico", href: EXTERNAL_LINKS.guiaMedico, external: true },
   { label: "Institucional", href: "/institucional" },
-  { label: "IDSS", href: "/institucional/idss" },
+  { label: "IDSS", href: "/idss" },
   // Rótulo abreviado só no menu (a página usa o nome completo no título) —
   // com o nome inteiro o menu desktop não cabe nem em telas grandes.
-  { label: "Reajustes", href: "/institucional/reajustes" },
+  { label: "Reajustes", href: "/reajustes" },
   { label: "Atendimento", href: "/atendimento" },
   { label: "Avisos", href: "/noticias" },
 ];
@@ -107,8 +107,8 @@ export const FOOTER_LINKS = {
   institucionalExtra: [
     { label: "Contato", href: "/atendimento/contato" },
     { label: "Ouvidoria", href: "/ouvidoria" },
-    { label: "IDSS", href: "/institucional/idss" },
-    { label: "Reajuste de Contratos Coletivos", href: "/institucional/reajustes" },
+    { label: "IDSS", href: "/idss" },
+    { label: "Reajuste de Contratos Coletivos", href: "/reajustes" },
     { label: "Trabalhe Conosco", href: "/trabalhe-conosco" },
     { label: "Privacidade", href: "/privacidade" },
   ],
