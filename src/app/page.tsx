@@ -22,6 +22,7 @@ export default function HomePage() {
           { src: "/hero/planos-empresarial-equipe.jpg", position: "center 35%" },
           { src: "/hero/planos-empresarial-aperto-mao.jpg", position: "center 35%" },
           { src: "/hero/planos-familiar.jpg", position: "center 35%" },
+          { src: "/hero/planos-familiar-2.jpg", position: "center 30%" },
         ]}
         imageAlt="Família caminhando e sorrindo em um parque arborizado"
       />
