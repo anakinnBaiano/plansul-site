@@ -49,8 +49,8 @@ export default function Header() {
           <Image
             src="/logo-plansul.png"
             alt="Plansul"
-            width={1405}
-            height={375}
+            width={1642}
+            height={400}
             className="h-12 w-auto"
             priority
           />
